@@ -1,0 +1,23 @@
+# The Visa Wall: LLM Bias Evaluation
+# Requirements for NVIDIA A100 GPU
+
+# Core inference engine
+vllm>=0.6.0
+torch>=2.1.0
+
+# Model loading
+transformers>=4.44.0
+accelerate>=0.27.0
+sentencepiece>=0.2.0
+protobuf>=4.25.0
+
+# Configuration
+pyyaml>=6.0
+
+# Utilities
+numpy>=1.24.0
+pandas>=2.0.0
+
+# HuggingFace authentication (for gated models like Llama)
+huggingface-hub>=0.20.0
+
