@@ -1,0 +1,326 @@
+% This is samplepaper.tex, a sample chapter demonstrating the
+% LLNCS macro package for Springer Computer Science proceedings;
+% Version 2.21 of 2022/01/12
+%
+\documentclass[runningheads]{llncs}
+%
+\usepackage[T1]{fontenc}
+% T1 fonts will be used to generate the final print and online PDFs,
+% so please use T1 fonts in your manuscript whenever possible.
+% Other font encondings may result in incorrect characters.
+%
+
+
+\usepackage{adjustbox}
+\usepackage{graphicx}
+\graphicspath{{../}}
+\usepackage{chngcntr}
+\usepackage{enumitem}
+\setlist[itemize]{itemsep=0.4em, topsep=0.4em}
+\usepackage{graphicx}
+\usepackage{xcolor}
+% Used for displaying a sample figure. If possible, figure files should
+% be included in EPS format.
+%
+% If you use the hyperref package, please uncomment the following two lines
+% to display URLs in blue roman font according to Springer's eBook style:
+%\usepackage{color}
+%\renewcommand\UrlFont{\color{blue}\rmfamil	y}
+%\urlstyle{rm}
+\usepackage[colorlinks=true, linkcolor=black, urlcolor=blue, citecolor=black]{hyperref}
+\usepackage{amsmath}
+\usepackage{tabularx}
+\usepackage{cite}
+\usepackage{booktabs}
+%\usepackage[colorlinks, linkcolor=blue]{hyperref}
+\usepackage{listings}
+\usepackage{booktabs}
+\makeatletter
+\def\UrlAlphabet{%
+	\do\a\do\b\do\c\do\d\do\e\do\f\do\g\do\h\do\i\do\j%
+	\do\k\do\l\do\m\do\n\do\o\do\p\do\q\do\r\do\s\do\t%
+	\do\u\do\v\do\w\do\x\do\y\do\z\do\A\do\B\do\C\do\D%
+	\do\E\do\F\do\G\do\H\do\I\do\J\do\K\do\L\do\M\do\N%
+	\do\O\do\P\do\Q\do\R\do\S\do\T\do\U\do\V\do\W\do\X%
+	\do\Y\do\Z}
+\def\UrlDigits{\do\1\do\2\do\3\do\4\do\5\do\6\do\7\do\8\do\9\do\0}
+\g@addto@macro{\UrlBreaks}{\UrlOrds}
+\g@addto@macro{\UrlBreaks}{\UrlAlphabet}
+\g@addto@macro{\UrlBreaks}{\UrlDigits}
+\makeatother
+\setcounter{topnumber}{5}
+\setcounter{bottomnumber}{5}
+\setcounter{totalnumber}{10}
+\renewcommand{\topfraction}{0.95}
+\renewcommand{\bottomfraction}{0.95}
+\renewcommand{\textfraction}{0.05}      % 本页最少正文比例，降到 5%
+\renewcommand{\floatpagefraction}{0.9}  % 允许浮动页填充到 90%
+\lstset{
+    basicstyle=\ttfamily\small,
+    keywordstyle=\color{blue},
+    commentstyle=\color{gray},
+    stringstyle=\color{orange},
+    numbers=left,
+    numberstyle=\tiny,
+    stepnumber=1,
+    numbersep=5pt,
+    frame=single,
+    breaklines=true,
+    breakatwhitespace=false,
+    showspaces=false,
+    showtabs=false
+}
+
+%
+\begin{document}
+
+\title{The Visa Wall: Benchmarking LLM Bias and Hallucinated Barriers Against Non-EU Applicants in the German Labor Market}
+
+\author{Anh-Nhat Nguyen\orcidID{2034311}}
+
+\institute{University of Mannheim, Germany}
+
+\maketitle
+\section{Introduction}
+
+The UNESCO World Heritage List documents the world's most treasured cultural and natural sites. However, systematic analysis of this domain remains difficult for researchers seeking to explore the collection programmatically. Information is often scattered across heterogeneous sources and lacks consistent metadata for provenance and geography, which makes data visualization and statistical analysis challenging.
+
+This project addresses these limitations by developing an interactive Semantic Web application that provides flexible and reproducible access to World Heritage data. By putting Semantic Web ideas into practice, the application utilizes SPARQL and Linked Data principles to transform scattered, multilingual information into a coherent dataset. Ultimately, the objective is to offer a transparent resource that allows users to query sites by attributes such as country, type, or inscription century while retrieving clean datasets with summary statistics, supporting the tourism 
+
+\section{Background}
+\subsection{Dataset}
+To construct a robust Knowledge Graph (KG), this project integrates two principal open knowledge sources from the Linked Open Data cloud: Wikidata and DBpedia.
+\begin{itemize}
+	\item \textbf{Wikidata (Primary Source):} \footnote{\url{https://query.wikidata.org/}} Wikidata serves as the structural backbone of the graph. Data is retrieved via the official Wikidata SPARQL endpoint to ensure verifiable access to structured attributes. This source provides the core entity definitions, including site names, heritage criteria, coordinates, and inscription years.
+	\item \textbf{DBpedia (Supplementary Source):}  \footnote{\url{https://dbpedia.org/sparql}} \cite{auer2007dbpedia} DBpedia is employed to enrich the dataset with unstructured textual context. Specifically, the project retrieves abstracts and descriptive comments to augment the structured data found in Wikidata.
+\end{itemize}
+The scope of the integrated dataset is designed to cover approximately 800 to 1,200 UNESCO sites worldwide. All data extraction is performed via official SPARQL endpoints, with results stored in standard RDF formats or CSV/JSON for downstream integration.
+\subsection{Data Retrieval}
+The final dataset is constructed using a four-step workflow: data retrieval, resource mapping, knowledge integration, and enrichment.
+
+\subsubsection{Extraction and Transformation}
+
+Data is programmatically retrieved from SPARQL endpoints using Python libraries such as \texttt{SPARQLWrapper} and \texttt{rdflib}. Extracted RDF triples are transformed into an in-memory Pandas DataFrame using an ETL workflow, enabling vectorized queries and preprocessing including English-only label filtering and removal of null values.
+
+\subsubsection{Entity Alignment and Quality Control}
+
+While \texttt{owl:sameAs} relations link many Wikidata and DBpedia resources, coverage is inconsistent. Therefore, a label-based entity alignment strategy is applied, matching normalized site names (e.g., “Historic Sanctuary of Machu Picchu”) to ensure broader and more reliable integration.
+
+During EDA, numeric attributes (e.g., area, inscription year) were found to default to zero when missing. To address this “0-Value Problem,” the application suppresses unverified numeric fields in favor of trusted descriptive and geospatial data.
+
+
+
+\section{Knowledge Graph Integration (UNESCO: Wikidata $\leftrightarrow$ DBpedia)}
+
+This task integrates UNESCO World Heritage Sites from Wikidata and DBpedia into a unified knowledge graph. Site entities are aligned across sources, high-confidence \texttt{owl:sameAs} links are created, and complementary attributes are consolidated into both a tabular view for data-science workflows and an RDF/Turtle graph for graph-native consumption. The deliverables enable downstream querying, analytics, and UI/front-end development without revisiting the integration step.
+\subsection{Consolidated Source Tables from gathered data}
+From the Wikidata side, a site-level table (\texttt{wd\_merged}) is constructed by starting with \texttt{unesco\_basic} and left-joining comprehensive attributes (description, area, website, admin location, inscription date, Commons category), project attributes (heritage criteria \& labels, inscription year), regional context (continent, continent label) and conservation fields (buffer zone, endangered status). From the DBpedia side, a site-level table (\texttt{db\_merged}) is formed by joining the base UNESCO list with location/media (latitude, longitude, thumbnail) and criteria/region/area; the consolidated inscription year is \texttt{year\_final}, preferring the criteria table’s year if present. Result sizes and the final integrated view are summarized below.
+
+\begin{table}[htbp]  % <--- Fixed syntax and changed  to [htbp]
+	\centering
+	% In academic papers (LLNCS), table captions usually go ABOVE the table
+	\caption{Site-level consolidation results (one row per site).} 
+	\begin{tabular}{lrr}
+		\toprule
+		Table & Rows & Columns \\
+		\midrule
+		Wikidata (\texttt{wd\_merged}) & 1{,}200 & 21 \\
+		DBpedia (\texttt{db\_merged}) & 952 & 13 \\
+		Integrated view (\texttt{unesco\_integrated.csv}) & 227 & 30 \\
+		\bottomrule
+	\end{tabular}
+\end{table}
+
+\subsection{Entity Mapping Methodology}
+Labels are normalized to maximize exact matches:
+\[
+\mathrm{norm}(s)=\text{lowercase}(s)\ \text{with } \{(),\_,,\}\ \text{removed and whitespace normalized}.
+\]
+Direct alignments are obtained by inner-joining \texttt{wd\_merged.siteLabel} and \texttt{db \_merged.name} on the normalized label. For Wikidata sites without a direct match, we compute TF–IDF vectors (1–2 grams) over concatenated texts: \emph{WD} uses \texttt{siteLabel+description}; \emph{DB} uses \texttt{name+criteria+region+whs}. Cosine similarity
+\[
+\mathrm{cosine}(x,y)=\frac{x\cdot y}{\|x\|\,\|y\|}
+\]
+is evaluated between remaining WD and DB candidates; the best candidate is accepted if the score is at least $0.9$. This strict threshold favors precision.
+
+\begin{table}[htbp] 
+\centering
+\caption{Wikidata $\leftrightarrow$ DBpedia alignment summary.}
+\begin{tabular}{lrr}
+\toprule
+Match Type & Count & Notes \\
+\midrule
+Direct (normalized label equality) & 222 & exact after normalization \\
+Cosine TF--IDF ($\geq 0.9$) & 5 & high-confidence fallback \\
+\midrule
+\textbf{Total aligned pairs} & \textbf{227} & retains \texttt{match\_type}, \texttt{similarity\_score} \\
+\bottomrule
+\end{tabular}
+\end{table}
+\subsection{Integrated Tabular View}
+Using the alignments, we assemble a unified table with identification and linking (\texttt{site\_wd}, \texttt{site\_db}, \texttt{wd\_siteLabel}, \texttt{db\_name}, \texttt{match\_type}, \texttt{similarity\_score}), geography and coordinates (\texttt{wd\_country}, \texttt{wd\_countryLabel}, \texttt{db\_country}, \texttt{wd\_ continent}, \texttt{wd\_continentLa bel}, \texttt{wd\_coordinates}, \texttt{db\_lat}, \texttt{db\_long}), identifiers and years (\texttt{wd\_unescoId}, \texttt{db\_whs}, \texttt{wd\_inscri ption Year}, \texttt{db\_year\_final}), criteria and extent (\texttt{wd\_heritageCriteria}, \texttt{wd\_heritageCri teriaLabel}, \texttt{db\_ criteria}, \texttt{wd\_area}, \texttt{db\_area}), protection and region (\texttt{wd\_bufferZone}, \texttt{wd\_endang red Status}, \texttt{db\_region}), and presentation fields (\texttt{wd\_descri ption}, \texttt{wd\_image}, \texttt{db\_thumbnail}, \texttt{wd\_website}). The integrated table is saved as csv with 227 x 30 dimensions.
+\subsection{RDF/Turtle Export}
+The integrated table is exported as an RDF graph with Wikidata URIs as subjects, a custom UNESCO namespace for predicates, and explicit \texttt{owl:sameAs} links to DBpedia. The exported graph contains \textbf{4,230 triples} over \textbf{227} site subjects.
+\subsection{Validation and Parity Checks}
+We validated parity between the integrated CSV and the RDF export using \texttt{rdflib}. Subject coverage is perfect: the number of distinct \texttt{site\_wd} in the CSV equals the number of subjects with \texttt{u:label} in the TTL (227/227), with no omissions. Attribute coverage parity is confirmed by comparing the number of non-null CSV values with the number of TTL subjects having each predicate. Representative predicates are shown below.
+\begin{table}[htbp]
+\centering
+\begin{tabular}{lrr}
+\toprule
+Predicate & CSV Non-Null & TTL Subjects \\
+\midrule
+\texttt{u:label} & 227 & 227 \\
+\texttt{u:countryLabel} & 227 & 227 \\
+\texttt{u:unescoId} & 226 & 226 \\
+\texttt{u:dbWHS} & 115 & 115 \\
+\texttt{u:wdArea} & 70 & 70 \\
+\texttt{u:dbArea} & 37 & 37 \\
+\texttt{owl:sameAs} & 227 & 227 \\
+\bottomrule
+\end{tabular}
+\caption{CSV $\leftrightarrow$ TTL coverage parity for representative predicates.}
+\end{table}
+
+Random spot checks compared CSV values and TTL objects for labels, country labels, inscription years, areas, descriptions, and \texttt{owl:sameAs} targets; all matched as expected, noting the intended normalization from full datetime to year for \texttt{u:inscriptionYear} and the numeric cast for areas and lat/long.
+
+\section{Application Development and Technical Implementation}
+
+This section details the technical architecture of the interactive application, focusing on the seamless integration of the frontend interface, local knowledge retrieval mechanisms, and generative AI logic.
+
+\begin{figure}[htbp] 
+    \centering
+    % Ensure you have uploaded 'frontend.png' to Overleaf
+    \includegraphics[width=0.9\textwidth]{frontend.png}
+	\caption{Interactive application interface with AI and geospatial visualization}
+    \label{fig:interface}
+\end{figure}
+\subsection{Frontend Architecture and Layout}
+The user interface was developed using \texttt{Streamlit}, enabling a responsive web interface in pure Python. As illustrated in Figure~\ref{fig:interface}, the layout comprises three components:
+
+\textbf{Configuration Sidebar.} The sidebar allows users to switch between inference engines (\textbf{Google Gemini 2.5 Flash} vs. \textbf{Google T5}) via dropdown, adapting to cloud or local environments without disrupting the chat workflow.
+
+\textbf{Conversational Interface.} The chat window uses \texttt{st.session\_state} to maintain dialogue context, enabling multi-turn conversations despite the framework's stateless nature.
+
+\textbf{Multi-View Visualization Panel.} Adjacent to the chat, a dynamic dashboard visualizes retrieved data through a \texttt{Folium} map (auto-zooming to queried sites), an image gallery, and an interactive knowledge graph viewer.
+
+
+\subsection{Search Logic: ETL and Fuzzy Matching}
+To optimize for performance and user experience, the system utilizes a local retrieval strategy rather than relying on direct, high-latency SPARQL queries to DBpedia during runtime.
+
+\subsubsection{ETL Pipeline}
+While the source data is maintained in \textbf{Turtle (.ttl)} format to preserve semantic standards, an Extract-Transform-Load (ETL) process is triggered at runtime. This process transforms the graph data into an in-memory \texttt{pandas} DataFrame, allowing for millisecond-level retrieval speeds for interactive queries.
+
+\subsubsection{Fuzzy Search Logic}
+To address potential user input errors (e.g., typographic errors like "Angkor Watt"), the system implements the \texttt{rapidfuzz} library. By calculating token-set similarity ratios, the application identifies the intended site from the local dataset with high robustness, superior to strict database string matching.
+
+\subsection{Intelligence Layer: Intent Understanding and Generative Logic}
+The core intelligence logic leverages a \textbf{context-aware generative workflow}, enhanced by a \textbf{Dual-LLM strategy}. The process follows three steps:
+
+\begin{itemize}
+    \item \textbf{Intent Recognition:} An LLM first classifies the user's intent (e.g., distinguishing between a request for a \textit{Specific Site} versus a \textit{Random Recommendation}).
+    \item \textbf{Data Grounding:} Instead of relying solely on the model's training memory, structured data (Name, Location, Description) is dynamically retrieved from the local DataFrame and injected into the system prompt. This ensures the generated response is factually accurate and strictly based on the provided dataset.
+    \item \textbf{Model Flexibility:} The architecture supports toggling between \textbf{Google Gemini 2.5 Flash} (via \texttt{google-genai} for high-performance cloud processing) and \textbf{Google T5} \cite{raffel2020exploring} (via \texttt{transformers} for commodity processing).
+\end{itemize}
+
+\subsection{Hybrid Knowledge Graph Visualization}
+A planning feature is \textbf{Hybrid KG Viewer} to demonstrates system interoperability. By default, the viewer displays triples from the local dataset. Users can activate "Live Mode" to trigger real-time \textbf{SPARQL queries} to the \textbf{DBpedia endpoint}, retrieving enriched properties (abstracts, area measurements) not present locally, showcasing the architecture's extensibility to external Linked Open Data sources.
+
+
+
+
+\section{Experimental Setup}
+
+\noindent\textbf{Evaluation 1: End-to-End Country Retrieval.}
+We evaluated the complete pipeline, from intent recognition to response generation, using a dataset of \textbf{13 country-specific queries}. Each query used an ISO-style code (for example, \texttt{C\_DE} for Germany, \texttt{C\_FR} for France, \texttt{C\_VN} for Vietnam). The system returned 15 candidate heritage sites, which were manually checked against the official UNESCO World Heritage List.
+
+Binary ground truth labels (\texttt{is\_correct}) were assigned using strict UNESCO designation criteria. For example, the reconstructed Roman fortress \textit{Limeskastell Pohl} is not part of the UNESCO list for Germany. The correct associated heritage site is \textit{Frontiers of the Roman Empire}, which refers to the various Roman Limes.
+
+\bigskip
+
+\noindent\textbf{Evaluation 2: Similarity-based Entity Matching.}
+To evaluate the robustness of Knowledge Graph alignment, we constructed a dataset of \textbf{15 Wikidata and DBpedia label pairs}. The model predicted equivalence using a cosine similarity threshold of \textbf{0.9}.
+
+The dataset also contained hard negatives, which are pairs with high textual similarity but different semantic scope. For example, the model must correctly separate the UNESCO site \textit{Budapest, including the Banks of the Danube} from the general encyclopedic topic \textit{History of Budapest}. We report Precision, Recall, and F1-score against manually assigned ground truth labels (\texttt{gt\_same}).
+
+\section{Results \& Discussion}
+
+\noindent\textbf{Retrieval Performance (Eval 1)} Across 13 country-level (15 entities) test queries, the system achieved an \textbf{Overall Precision of 0.7333}
+(see Appendix \ref{tab:eval1-results} for breakdown).
+\subsection{Evaluation Results}
+
+\noindent\textbf{Country-level Retrieval Performance.} The system demonstrated exceptional reliability for 10 out of 13 queries (e.g., \texttt{C\_CA}, \texttt{C\_UK}), achieving \textbf{1.0 (100\%) precision}. Overall, 11 of the 15 retrieved candidates were validated as correct, confirming the effectiveness of the LLM-based intent extraction. However, performance degraded in specific edge cases. Precision dropped to \textbf{0.5} for Germany due to noise introduced by the sampling strategy for broad queries. Furthermore, queries for Australia and France yielded \textbf{0.0 precision}. This failure was traced to label mismatches in the knowledge graph; discrepancies between user inputs (e.g., ``France'') and formal literals (e.g., ``French Republic'') caused the substring matching logic in \texttt{\_query\_kg\_by\_intent} to fail.
+
+\bigskip
+
+\noindent\textbf{Entity Matching Robustness.} The similarity-based matcher proved highly effective. At a threshold of $\tau = 0.9$, the system identified \textbf{13 True Positives} and \textbf{2 False Positives}, resulting in a \textbf{Precision of 0.87} and an \textbf{F1-Score of 0.93}. Crucially, the system achieved a \textbf{Recall of 1.00} (zero False Negatives). The lower precision means that a few incorrect matches were included. However, this is acceptable because it is better to show extra candidates than to accidentally exclude correct heritage sites.
+
+\subsection{Limitations}
+
+This work faces several key limitations that affect system accuracy and completeness.
+
+\textbf{Static Dataset and Outdated Information.} The knowledge graph relies on a static \texttt{unesco\_integrated\_full.ttl} snapshot rather than real-time UNESCO API data. Newly inscribed sites, delisted entries, or status changes are not reflected without manual re-ingestion, preventing the system from serving as a current reference.
+
+\textbf{Missing and Invalid Numeric Data.} Many numeric fields such as \texttt{area} and \texttt{inscriptionYear} contain zero values when data is actually missing from Wikidata. For example, a site might show an area of 0 square kilometers, which is clearly incorrect. These zeros substitute for NULL values in the crowd-sourced extraction process. To avoid confusion, our application suppresses these unreliable fields and prioritizes textual descriptions. While "Live Mode" attempts to retrieve valid values from DBpedia, coverage remains inconsistent.
+
+\textbf{Label Matching Failures.} Entity alignment fails when user inputs do not match formal names in the graph. For instance, searching "France" fails if the graph stores "French Republic" instead, causing 0.0 precision for France and Australia queries. The TF-IDF similarity fallback handles spelling variations but cannot resolve systematic naming differences.
+
+\textbf{Limited Model Flexibility.} While supporting both Gemini 2.5 Flash and Google T5, only Gemini provides acceptable accuracy. T5 lacks the reasoning capability for reliable intent classification, making cloud-based Gemini effectively mandatory and requiring stable internet connectivity.
+
+\textbf{Limited Evaluation Scope.} Testing covered only 13 country queries and 15 entity pairs. This small sample may not represent performance on rare sites, multilingual queries, or challenging inputs. No user study assessed real-world usability.
+
+\subsection{Future Work}
+Future work should address three key improvements. First, implementing live synchronization with the official UNESCO API would eliminate reliance on static snapshots. Second, developing entity normalization with country name mappings (e.g., "France" and "French Republic") would improve retrieval robustness, as evidenced by our label mismatch failures. Third, integrating a hybrid retrieval-augmented generation architecture combining SPARQL queries with vector-based semantic search could overcome exact string matching. Our experience demonstrates that even high-quality Linked Open Data sources require substantial preprocessing and alignment logic, suggesting future semantic web systems should prioritize data quality validation and fuzzy matching from the outset.
+
+\clearpage
+\section{Appendix}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=1\linewidth]{output.png}
+    \caption{Coverage for mapped sites. only approx. first 12 attributes might be relevant due to coverage}
+    \label{fig:eval}
+\end{figure}
+\begin{table}[htbp]
+	\centering
+	\caption{Country-level retrieval precision for Evaluation~1.}
+	\label{tab:eval1-results}
+	\begin{tabular}{lcccccccccccccc}
+		\hline
+		Query & AU & CA & CH & CN & DE & ES & FR & GB & IS & JP & MX & VN & ZA & Overall \\
+		\hline
+		Precision & 0 & 1 & 1 & 1 & 0.5 & 1 & 0 & 1 & 1 & 1 & 1 & 1 & 1 & 0.73 \\
+		\hline
+	\end{tabular}
+\end{table}
+
+
+\clearpage
+
+\bibliographystyle{plainnat}  % LLNCS bibliography style
+\bibliography{document}        % Don't include .bib extension
+
+\section*{Declaration of Authorship}
+
+I hereby declare that I have prepared this report for project alignment independently, without the assistance of third parties and without using any sources or aids other than those indicated.  
+
+\begin{center}
+  \textbf{Declaration of Used AI Tools} \\[.3em]
+  \begin{tabularx}{\textwidth}{lXlc}
+    \toprule
+    Tool & Purpose & Where? & Useful? \\
+    \midrule
+    ChatGPT - 5 & Academic rephrasing & Report writing & ++ \\
+    DeepL & Translation & Report writing & +++ \\
+    Toggle Writefull & Grammar check in Overleaf & Report writing & + \\
+    Gemini & Code debugging support & Coding & +++ \\
+
+    \bottomrule
+  \end{tabularx}
+\end{center}
+
+\vspace{2cm}
+\noindent Signature\\
+\noindent Mannheim, November 17, 2025\hfill
+
+
+
+\end{document}

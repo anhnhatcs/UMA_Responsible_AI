@@ -1,0 +1,78 @@
+\begin{thebibliography}{15}
+\expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
+
+\bibitem[{Bertrand and Mullainathan(2004)}]{bertrand2004emily}
+Marianne Bertrand and Sendhil Mullainathan. 2004.
+\newblock Are emily and greg more employable than lakisha and jamal? a field experiment on labor market discrimination.
+\newblock \emph{American Economic Review}, 94(4):991--1013.
+
+\bibitem[{Blodgett et~al.(2020)Blodgett, Barocas, Daum{\'e}~III, and Wallach}]{blodgett2020language}
+Su~Lin Blodgett, Solon Barocas, Hal Daum{\'e}~III, and Hanna Wallach. 2020.
+\newblock Language (technology) is power: A critical survey of ``bias'' in {NLP}.
+\newblock In \emph{Proceedings of the 58th Annual Meeting of the Association for Computational Linguistics}, pages 5454--5476.
+
+\bibitem[{Bolukbasi et~al.(2016)Bolukbasi, Chang, Zou, Saligrama, and Kalai}]{bolukbasi2016man}
+Tolga Bolukbasi, Kai-Wei Chang, James~Y Zou, Venkatesh Saligrama, and Adam~T Kalai. 2016.
+\newblock Man is to computer programmer as woman is to homemaker? debiasing word embeddings.
+\newblock In \emph{Advances in Neural Information Processing Systems}, volume~29.
+
+\bibitem[{Bui et~al.(2025)Bui, Holtermann, Hofmann, Lauscher, and von~der Wense}]{bui2025dialects}
+Minh~Duc Bui, Carolin Holtermann, Valentin Hofmann, Anne Lauscher, and Katharina von~der Wense. 2025.
+\newblock Large language models discriminate against speakers of {German} dialects.
+\newblock \emph{arXiv preprint arXiv:2509.13835}.
+
+\bibitem[{Dubey et~al.(2024)Dubey, Jauhri, Pandey, Datta, Adlakha, Razmara et~al.}]{llama31}
+Abhimanyu Dubey, Abhinav Jauhri, Abhinav Pandey, Abhishek Datta, Sahil Adlakha, Bakhtiari Razmara, et~al. 2024.
+\newblock The {L}lama 3 herd of models.
+\newblock \emph{arXiv preprint arXiv:2407.21783}.
+
+\bibitem[{{Federal Employment Agency}(2024)}]{federal2024bluecard}
+{Federal Employment Agency}. 2024.
+\newblock {EU} {Blue Card}: Information for employers.
+
+\bibitem[{Jiang et~al.(2023)Jiang, Sablayrolles, Mensch, Bamford, Chaplot, Casas et~al.}]{mistral2023}
+Albert~Q Jiang, Alexandre Sablayrolles, Arthur Mensch, Chris Bamford, Devendra~Singh Chaplot, Diego de~las Casas, et~al. 2023.
+\newblock Mistral 7{B}.
+\newblock \emph{arXiv preprint arXiv:2310.06825}.
+
+\bibitem[{Jiang et~al.(2024{\natexlab{a}})Jiang, Sablayrolles, Roux, Mensch, Savary, Bamford, Chaplot, de~las Casas, Hanna, Bressand et~al.}]{mistral-medium2024}
+Albert~Q Jiang, Alexandre Sablayrolles, Antoine Roux, Arthur Mensch, Blanche Savary, Chris Bamford, Devendra~S Chaplot, Diego de~las Casas, Emma~Bou Hanna, Florian Bressand, et~al. 2024{\natexlab{a}}.
+\newblock Mixtral of {E}xperts: A sparse mixture-of-experts language model.
+\newblock \emph{arXiv preprint arXiv:2401.04088}.
+
+\bibitem[{Jiang et~al.(2024{\natexlab{b}})}]{ministral2024}
+Albert~Q Jiang et~al. 2024{\natexlab{b}}.
+\newblock Ministral 8{B}: A lean high-performance language model.
+\newblock \emph{arXiv preprint arXiv:2410.19225}.
+
+\bibitem[{Rao et~al.(2025)}]{rao2025invisible}
+Aditi Rao et~al. 2025.
+\newblock Invisible filters: Cultural bias in hiring.
+\newblock In \emph{Proceedings of the AAAI Conference on Artificial Intelligence}.
+
+\bibitem[{Schick et~al.(2021)Schick, Udupa, and Sch{\"u}tze}]{schick2021self}
+Timo Schick, Sahana Udupa, and Hinrich Sch{\"u}tze. 2021.
+\newblock Self-diagnosis and self-debiasing: A proposal for reducing corpus-based bias in {NLP}.
+\newblock \emph{Transactions of the Association for Computational Linguistics}, 9:1408--1424.
+
+\bibitem[{Team et~al.(2024{\natexlab{a}})}]{gemma2024}
+Gemma Team et~al. 2024{\natexlab{a}}.
+\newblock Gemma: Open models based on {G}emini research and technology.
+\newblock \emph{arXiv preprint arXiv:2403.08295}.
+
+\bibitem[{Team et~al.(2024{\natexlab{b}})}]{qwen3report}
+Qwen Team et~al. 2024{\natexlab{b}}.
+\newblock Qwen2.5 and {Q}wen3: Technical reports and model improvements.
+\newblock \emph{arXiv preprint}.
+
+\bibitem[{{U.S. Equal Employment Opportunity Commission}(1978)}]{eeoc1978}
+{U.S. Equal Employment Opportunity Commission}. 1978.
+\newblock Uniform guidelines on employee selection procedures.
+\newblock \emph{Federal Register}, 43(166):38290--38315.
+
+\bibitem[{Yang et~al.(2024)Yang, Jin, Tang, Han, Feng, Zhou et~al.}]{qwen2024}
+Junyang Yang, Haizhao Jin, Ruobo Tang, Zhongjun Han, Feng Feng, Yichuan Zhou, et~al. 2024.
+\newblock Qwen2 technical report.
+\newblock \emph{arXiv preprint arXiv:2407.10671}.
+
+\end{thebibliography}

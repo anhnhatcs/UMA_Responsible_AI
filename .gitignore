@@ -1,6 +1,5 @@
 logs/
 results/
-report/
 __pycache__/
 *.pyc
 *.pyo
