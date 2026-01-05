@@ -812,39 +812,81 @@ case $MODE in
             exit 1
         fi
         echo "Running custom models: $MODELS"
+        echo ""
         
-        # Auto-detect tensor parallelism needs based on model size
-        # NOTE: Tensor parallelism must be power of 2 (1, 2, 4, 8) to divide attention heads evenly
-        if [[ "$MODELS" =~ "llama31-70b" ]]; then
-            # 70B model needs 4 GPUs (64 heads / 4 = 16 per GPU)
-            TENSOR_PARALLEL=${TENSOR_PARALLEL:-4}
-            GPU_MEMORY=${GPU_MEMORY:-0.85}
-            echo "Extra-large model detected (70B) - using tensor_parallel=$TENSOR_PARALLEL, gpu_memory=$GPU_MEMORY"
-        elif [[ "$MODELS" =~ "gemma2-27b" ]] || [[ "$MODELS" =~ "qwen3-30b" ]] || [[ "$MODELS" =~ "qwen3-32b" ]] || [[ "$MODELS" =~ "mistral-small" ]]; then
-            # 27B-32B models need 2 GPUs
-            TENSOR_PARALLEL=${TENSOR_PARALLEL:-2}
-            GPU_MEMORY=${GPU_MEMORY:-0.85}
-            echo "Large model detected (27B-32B) - using tensor_parallel=$TENSOR_PARALLEL, gpu_memory=$GPU_MEMORY"
-        else
-            # Small models (4B-14B) use 1 GPU
-            TENSOR_PARALLEL=${TENSOR_PARALLEL:-1}
-            GPU_MEMORY=${GPU_MEMORY:-0.90}
-        fi
+        # Run each model with appropriate GPU configuration
+        # This avoids wasting GPU resources by using tensor_parallel=4 for small models
+        for model in $MODELS; do
+            echo "=========================================="
+            echo ">>> Processing model: $model"
+            echo "=========================================="
+            
+            # Determine optimal GPU configuration per model
+            case $model in
+                llama31-70b)
+                    # 70B model needs 4 GPUs
+                    TP_SIZE=4
+                    GPU_MEM=0.85
+                    EAGER_FLAG=""
+                    echo "  Config: 70B model - 4 GPUs (tensor_parallel=4)"
+                    ;;
+                gemma2-27b|qwen3-30b|qwen3-32b|mistral-small)
+                    # 27B-32B models need 2 GPUs
+                    TP_SIZE=2
+                    GPU_MEM=0.85
+                    if [[ "$model" =~ "gemma2" ]]; then
+                        EAGER_FLAG="--enforce-eager"
+                        echo "  Config: 27B model - 2 GPUs (tensor_parallel=2) + eager mode for Gemma"
+                    else
+                        EAGER_FLAG=""
+                        echo "  Config: 27B-32B model - 2 GPUs (tensor_parallel=2)"
+                    fi
+                    ;;
+                gemma2-9b)
+                    # Small Gemma needs eager mode but only 1 GPU
+                    TP_SIZE=1
+                    GPU_MEM=0.90
+                    EAGER_FLAG="--enforce-eager"
+                    echo "  Config: 9B Gemma - 1 GPU + eager mode for softcapping"
+                    ;;
+                *)
+                    # Small models (4B-14B) use 1 GPU, no eager mode
+                    TP_SIZE=1
+                    GPU_MEM=0.90
+                    EAGER_FLAG=""
+                    echo "  Config: Small model - 1 GPU"
+                    ;;
+            esac
+            
+            # Build command for this specific model
+            MODEL_CMD="python $PYTHON_SCRIPT \
+                --config $CONFIG_FILE \
+                --models $model \
+                --runs ${RUNS:-3} \
+                --output $OUTPUT_DIR \
+                --gpu-memory $GPU_MEM \
+                --tensor-parallel $TP_SIZE \
+                --max-model-len 4096 \
+                $EAGER_FLAG"
+            
+            echo ""
+            echo "Running: $MODEL_CMD"
+            echo ""
+            
+            eval $MODEL_CMD
+            
+            EXIT_CODE=$?
+            if [ $EXIT_CODE -ne 0 ]; then
+                echo "ERROR: Model $model failed with exit code $EXIT_CODE"
+                echo "Continuing with next model..."
+            else
+                echo "✓ Model $model completed successfully"
+            fi
+            echo ""
+        done
         
-        CMD="python $PYTHON_SCRIPT \
-            --config $CONFIG_FILE \
-            --models $MODELS \
-            --runs ${RUNS:-3} \
-            --output $OUTPUT_DIR \
-            --gpu-memory $GPU_MEMORY \
-            --tensor-parallel $TENSOR_PARALLEL \
-            --max-model-len 4096"
-        
-        # Add enforce-eager for Gemma models (softcapping support)
-        if [[ "$MODELS" =~ "gemma2" ]]; then
-            CMD="$CMD --enforce-eager"
-            echo "Gemma model detected - adding --enforce-eager for softcapping support"
-        fi
+        # Skip the CMD execution below since we handled it inline
+        CMD=""
         ;;
 
     *)

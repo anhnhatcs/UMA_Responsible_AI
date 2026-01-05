@@ -264,11 +264,16 @@ def run_evaluation(
     tensor_parallel_size: int = 1,
     max_model_len: Optional[int] = None,
     enforce_eager: bool = False,
+    existing_results: Optional[List[EvaluationResult]] = None,
 ) -> List[EvaluationResult]:
-    """Run the full evaluation pipeline."""
+    """Run the full evaluation pipeline.
+    
+    Args:
+        existing_results: Previous results to combine with (for resume functionality)
+    """
     
     os.makedirs(output_dir, exist_ok=True)
-    all_results: List[EvaluationResult] = []
+    all_results: List[EvaluationResult] = existing_results.copy() if existing_results else []
     timestamp = datetime.now().isoformat()
     
     # Get settings from config
@@ -401,23 +406,48 @@ def run_evaluation(
         del llm
         import torch
         torch.cuda.empty_cache()
+        
+        # ============================================================
+        # INCREMENTAL SAVE: Save results after each model completes
+        # This prevents data loss if job times out
+        # ============================================================
+        print(f"\n{'='*60}")
+        print(f"Saving results for {model_key} (incremental checkpoint)...")
+        print(f"{'='*60}")
+        save_results(all_results, output_dir, timestamp)
+        print(f"✓ Checkpoint saved! Safe to continue or stop.")
     
-    # Save results
+    # Final save (redundant but ensures completeness)
+    print(f"\n{'='*60}")
+    print(f"All models complete - final save")
+    print(f"{'='*60}")
     save_results(all_results, output_dir, timestamp)
     
     return all_results
 
 
 def save_results(results: List[EvaluationResult], output_dir: str, timestamp: str):
-    """Save results to JSON and CSV files."""
+    """Save results to JSON and CSV files.
     
-    # JSON output
+    Saves both combined results and per-model results for better tracking.
+    """
+    
+    # Combined JSON output (all models)
     json_path = os.path.join(output_dir, f"results_{timestamp.replace(':', '-')}.json")
     with open(json_path, 'w', encoding='utf-8') as f:
         json.dump([asdict(r) for r in results], f, ensure_ascii=False, indent=2)
     print(f"\nSaved JSON: {json_path}")
     
-    # CSV output
+    # Per-model JSON outputs (for easier recovery/analysis)
+    models_in_results = set(r.model for r in results)
+    for model_name in models_in_results:
+        model_results = [r for r in results if r.model == model_name]
+        model_json_path = os.path.join(output_dir, f"results_{model_name}_{timestamp.replace(':', '-')}.json")
+        with open(model_json_path, 'w', encoding='utf-8') as f:
+            json.dump([asdict(r) for r in model_results], f, ensure_ascii=False, indent=2)
+        print(f"  ✓ Saved {model_name}: {len(model_results)} evaluations")
+    
+    # Combined CSV output
     csv_path = os.path.join(output_dir, f"results_{timestamp.replace(':', '-')}.csv")
     with open(csv_path, 'w', newline='', encoding='utf-8') as f:
         fieldnames = [
@@ -540,6 +570,18 @@ def main():
         action="store_true",
         help="Disable CUDA graph and use eager mode (required for Gemma 2 softcapping)"
     )
+    parser.add_argument(
+        "--skip-models",
+        nargs="+",
+        default=[],
+        help="Models to skip (useful for resuming after timeout)"
+    )
+    parser.add_argument(
+        "--resume-from",
+        type=str,
+        default=None,
+        help="Resume from a previous results file (skips completed models)"
+    )
     
     args = parser.parse_args()
     
@@ -552,22 +594,47 @@ def main():
     else:
         model_keys = list(config['models'].keys())
     
+    # Handle resume functionality
+    existing_results = []
+    completed_models = set()
+    
+    if args.resume_from:
+        print(f"\n📂 Resuming from: {args.resume_from}")
+        try:
+            with open(args.resume_from, 'r') as f:
+                existing_data = json.load(f)
+                existing_results = [EvaluationResult(**r) for r in existing_data]
+                completed_models = set(r.model for r in existing_results)
+                print(f"   Found {len(existing_results)} existing results")
+                print(f"   Completed models: {sorted(completed_models)}")
+        except Exception as e:
+            print(f"   ⚠ Warning: Could not load resume file: {e}")
+    
+    # Apply skip list (from CLI or auto-detected from resume)
+    skip_models = set(args.skip_models) | completed_models
+    if skip_models:
+        print(f"\n⏭️  Skipping models: {sorted(skip_models)}")
+        model_keys = [m for m in model_keys if m not in skip_models]
+    
     # GPU memory from config or CLI
     gpu_memory = args.gpu_memory or config.get('settings', {}).get('gpu_memory_utilization', 0.90)
     
-    print("="*60)
+    print("\n" + "="*60)
     print("THE VISA WALL: LLM Bias Evaluation")
     print("="*60)
     print(f"Config: {args.config}")
-    print(f"Models: {model_keys}")
+    print(f"Models to run: {model_keys}")
     print(f"Candidates: {list(config['candidates'].keys())}")
     print(f"Runs per candidate: {args.runs}")
     print(f"Output directory: {args.output}")
     print(f"Mitigation tests: {not args.no_mitigation}")
     if args.max_model_len:
         print(f"Max model length: {args.max_model_len}")
+    if skip_models:
+        print(f"Skipping models: {sorted(skip_models)}")
+    print("")
     
-    run_evaluation(
+    new_results = run_evaluation(
         model_keys=model_keys,
         config=config,
         num_runs=args.runs,
@@ -577,7 +644,15 @@ def main():
         tensor_parallel_size=args.tensor_parallel,
         max_model_len=args.max_model_len,
         enforce_eager=args.enforce_eager,
+        existing_results=existing_results,
     )
+    
+    # Combine existing and new results if resuming
+    if existing_results:
+        all_results = existing_results + new_results
+        print(f"\n✓ Combined {len(existing_results)} existing + {len(new_results)} new = {len(all_results)} total results")
+    else:
+        all_results = new_results
 
 
 if __name__ == "__main__":
