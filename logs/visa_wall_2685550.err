@@ -1,0 +1,106 @@
+/pfs/work9/workspace/scratch/ma_anhnnguy-topic_modeling_data/RAI/venv/lib/python3.11/site-packages/transformers/utils/hub.py:110: FutureWarning: Using `TRANSFORMERS_CACHE` is deprecated and will be removed in v5 of Transformers. Use `HF_HOME` instead.
+  warnings.warn(
+Note: Environment variable`HF_TOKEN` is set and is the current active token independently from the token you've just configured.
+[2025-12-27 22:47:31] WARNING _login.py:409: Note: Environment variable`HF_TOKEN` is set and is the current active token independently from the token you've just configured.
+The argument `trust_remote_code` is to be used with Auto classes. It has no effect here and is ignored.
+[0;36m(EngineCore_DP0 pid=142576)[0;0m Process EngineCore_DP0:
+[0;36m(EngineCore_DP0 pid=142576)[0;0m Traceback (most recent call last):
+[0;36m(EngineCore_DP0 pid=142576)[0;0m   File "/opt/bwhpc/common/devel/python/3.11.7_gnu_14.2/lib/python3.11/multiprocessing/process.py", line 314, in _bootstrap
+[0;36m(EngineCore_DP0 pid=142576)[0;0m     self.run()
+[0;36m(EngineCore_DP0 pid=142576)[0;0m   File "/opt/bwhpc/common/devel/python/3.11.7_gnu_14.2/lib/python3.11/multiprocessing/process.py", line 108, in run
+[0;36m(EngineCore_DP0 pid=142576)[0;0m     self._target(*self._args, **self._kwargs)
+[0;36m(EngineCore_DP0 pid=142576)[0;0m   File "/pfs/work9/workspace/scratch/ma_anhnnguy-topic_modeling_data/RAI/venv/lib/python3.11/site-packages/vllm/v1/engine/core.py", line 870, in run_engine_core
+[0;36m(EngineCore_DP0 pid=142576)[0;0m     raise e
+[0;36m(EngineCore_DP0 pid=142576)[0;0m   File "/pfs/work9/workspace/scratch/ma_anhnnguy-topic_modeling_data/RAI/venv/lib/python3.11/site-packages/vllm/v1/engine/core.py", line 857, in run_engine_core
+[0;36m(EngineCore_DP0 pid=142576)[0;0m     engine_core = EngineCoreProc(*args, **kwargs)
+[0;36m(EngineCore_DP0 pid=142576)[0;0m                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[0;36m(EngineCore_DP0 pid=142576)[0;0m   File "/pfs/work9/workspace/scratch/ma_anhnnguy-topic_modeling_data/RAI/venv/lib/python3.11/site-packages/vllm/v1/engine/core.py", line 637, in __init__
+[0;36m(EngineCore_DP0 pid=142576)[0;0m     super().__init__(
+[0;36m(EngineCore_DP0 pid=142576)[0;0m   File "/pfs/work9/workspace/scratch/ma_anhnnguy-topic_modeling_data/RAI/venv/lib/python3.11/site-packages/vllm/v1/engine/core.py", line 102, in __init__
+[0;36m(EngineCore_DP0 pid=142576)[0;0m     self.model_executor = executor_class(vllm_config)
+[0;36m(EngineCore_DP0 pid=142576)[0;0m                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[0;36m(EngineCore_DP0 pid=142576)[0;0m   File "/pfs/work9/workspace/scratch/ma_anhnnguy-topic_modeling_data/RAI/venv/lib/python3.11/site-packages/vllm/v1/executor/abstract.py", line 101, in __init__
+[0;36m(EngineCore_DP0 pid=142576)[0;0m     self._init_executor()
+[0;36m(EngineCore_DP0 pid=142576)[0;0m   File "/pfs/work9/workspace/scratch/ma_anhnnguy-topic_modeling_data/RAI/venv/lib/python3.11/site-packages/vllm/v1/executor/uniproc_executor.py", line 48, in _init_executor
+[0;36m(EngineCore_DP0 pid=142576)[0;0m     self.driver_worker.load_model()
+[0;36m(EngineCore_DP0 pid=142576)[0;0m   File "/pfs/work9/workspace/scratch/ma_anhnnguy-topic_modeling_data/RAI/venv/lib/python3.11/site-packages/vllm/v1/worker/gpu_worker.py", line 289, in load_model
+[0;36m(EngineCore_DP0 pid=142576)[0;0m     self.model_runner.load_model(eep_scale_up=eep_scale_up)
+[0;36m(EngineCore_DP0 pid=142576)[0;0m   File "/pfs/work9/workspace/scratch/ma_anhnnguy-topic_modeling_data/RAI/venv/lib/python3.11/site-packages/vllm/v1/worker/gpu_model_runner.py", line 3658, in load_model
+[0;36m(EngineCore_DP0 pid=142576)[0;0m     raise e
+[0;36m(EngineCore_DP0 pid=142576)[0;0m   File "/pfs/work9/workspace/scratch/ma_anhnnguy-topic_modeling_data/RAI/venv/lib/python3.11/site-packages/vllm/v1/worker/gpu_model_runner.py", line 3581, in load_model
+[0;36m(EngineCore_DP0 pid=142576)[0;0m     self.model = model_loader.load_model(
+[0;36m(EngineCore_DP0 pid=142576)[0;0m                  ^^^^^^^^^^^^^^^^^^^^^^^^
+[0;36m(EngineCore_DP0 pid=142576)[0;0m   File "/pfs/work9/workspace/scratch/ma_anhnnguy-topic_modeling_data/RAI/venv/lib/python3.11/site-packages/vllm/model_executor/model_loader/base_loader.py", line 49, in load_model
+[0;36m(EngineCore_DP0 pid=142576)[0;0m     model = initialize_model(
+[0;36m(EngineCore_DP0 pid=142576)[0;0m             ^^^^^^^^^^^^^^^^^
+[0;36m(EngineCore_DP0 pid=142576)[0;0m   File "/pfs/work9/workspace/scratch/ma_anhnnguy-topic_modeling_data/RAI/venv/lib/python3.11/site-packages/vllm/model_executor/model_loader/utils.py", line 48, in initialize_model
+[0;36m(EngineCore_DP0 pid=142576)[0;0m     return model_class(vllm_config=vllm_config, prefix=prefix)
+[0;36m(EngineCore_DP0 pid=142576)[0;0m            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[0;36m(EngineCore_DP0 pid=142576)[0;0m   File "/pfs/work9/workspace/scratch/ma_anhnnguy-topic_modeling_data/RAI/venv/lib/python3.11/site-packages/vllm/model_executor/models/llama.py", line 566, in __init__
+[0;36m(EngineCore_DP0 pid=142576)[0;0m     self.model = self._init_model(
+[0;36m(EngineCore_DP0 pid=142576)[0;0m                  ^^^^^^^^^^^^^^^^^
+[0;36m(EngineCore_DP0 pid=142576)[0;0m   File "/pfs/work9/workspace/scratch/ma_anhnnguy-topic_modeling_data/RAI/venv/lib/python3.11/site-packages/vllm/model_executor/models/llama.py", line 611, in _init_model
+[0;36m(EngineCore_DP0 pid=142576)[0;0m     return LlamaModel(vllm_config=vllm_config, prefix=prefix, layer_type=layer_type)
+[0;36m(EngineCore_DP0 pid=142576)[0;0m            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[0;36m(EngineCore_DP0 pid=142576)[0;0m   File "/pfs/work9/workspace/scratch/ma_anhnnguy-topic_modeling_data/RAI/venv/lib/python3.11/site-packages/vllm/compilation/decorators.py", line 291, in __init__
+[0;36m(EngineCore_DP0 pid=142576)[0;0m     old_init(self, **kwargs)
+[0;36m(EngineCore_DP0 pid=142576)[0;0m   File "/pfs/work9/workspace/scratch/ma_anhnnguy-topic_modeling_data/RAI/venv/lib/python3.11/site-packages/vllm/model_executor/models/llama.py", line 393, in __init__
+[0;36m(EngineCore_DP0 pid=142576)[0;0m     self.start_layer, self.end_layer, self.layers = make_layers(
+[0;36m(EngineCore_DP0 pid=142576)[0;0m                                                     ^^^^^^^^^^^^
+[0;36m(EngineCore_DP0 pid=142576)[0;0m   File "/pfs/work9/workspace/scratch/ma_anhnnguy-topic_modeling_data/RAI/venv/lib/python3.11/site-packages/vllm/model_executor/models/utils.py", line 605, in make_layers
+[0;36m(EngineCore_DP0 pid=142576)[0;0m     + [
+[0;36m(EngineCore_DP0 pid=142576)[0;0m       ^
+[0;36m(EngineCore_DP0 pid=142576)[0;0m   File "/pfs/work9/workspace/scratch/ma_anhnnguy-topic_modeling_data/RAI/venv/lib/python3.11/site-packages/vllm/model_executor/models/utils.py", line 606, in <listcomp>
+[0;36m(EngineCore_DP0 pid=142576)[0;0m     maybe_offload_to_cpu(layer_fn(prefix=f"{prefix}.{idx}"))
+[0;36m(EngineCore_DP0 pid=142576)[0;0m                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[0;36m(EngineCore_DP0 pid=142576)[0;0m   File "/pfs/work9/workspace/scratch/ma_anhnnguy-topic_modeling_data/RAI/venv/lib/python3.11/site-packages/vllm/model_executor/models/llama.py", line 395, in <lambda>
+[0;36m(EngineCore_DP0 pid=142576)[0;0m     lambda prefix: layer_type(vllm_config=vllm_config, prefix=prefix),
+[0;36m(EngineCore_DP0 pid=142576)[0;0m                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[0;36m(EngineCore_DP0 pid=142576)[0;0m   File "/pfs/work9/workspace/scratch/ma_anhnnguy-topic_modeling_data/RAI/venv/lib/python3.11/site-packages/vllm/model_executor/models/llama.py", line 302, in __init__
+[0;36m(EngineCore_DP0 pid=142576)[0;0m     self.self_attn = LlamaAttention(
+[0;36m(EngineCore_DP0 pid=142576)[0;0m                      ^^^^^^^^^^^^^^^
+[0;36m(EngineCore_DP0 pid=142576)[0;0m   File "/pfs/work9/workspace/scratch/ma_anhnnguy-topic_modeling_data/RAI/venv/lib/python3.11/site-packages/vllm/model_executor/models/llama.py", line 165, in __init__
+[0;36m(EngineCore_DP0 pid=142576)[0;0m     self.qkv_proj = QKVParallelLinear(
+[0;36m(EngineCore_DP0 pid=142576)[0;0m                     ^^^^^^^^^^^^^^^^^^
+[0;36m(EngineCore_DP0 pid=142576)[0;0m   File "/pfs/work9/workspace/scratch/ma_anhnnguy-topic_modeling_data/RAI/venv/lib/python3.11/site-packages/vllm/model_executor/layers/linear.py", line 935, in __init__
+[0;36m(EngineCore_DP0 pid=142576)[0;0m     super().__init__(
+[0;36m(EngineCore_DP0 pid=142576)[0;0m   File "/pfs/work9/workspace/scratch/ma_anhnnguy-topic_modeling_data/RAI/venv/lib/python3.11/site-packages/vllm/model_executor/layers/linear.py", line 484, in __init__
+[0;36m(EngineCore_DP0 pid=142576)[0;0m     self.quant_method.create_weights(
+[0;36m(EngineCore_DP0 pid=142576)[0;0m   File "/pfs/work9/workspace/scratch/ma_anhnnguy-topic_modeling_data/RAI/venv/lib/python3.11/site-packages/vllm/model_executor/layers/linear.py", line 215, in create_weights
+[0;36m(EngineCore_DP0 pid=142576)[0;0m     data=torch.empty(
+[0;36m(EngineCore_DP0 pid=142576)[0;0m          ^^^^^^^^^^^^
+[0;36m(EngineCore_DP0 pid=142576)[0;0m   File "/pfs/work9/workspace/scratch/ma_anhnnguy-topic_modeling_data/RAI/venv/lib/python3.11/site-packages/torch/utils/_device.py", line 103, in __torch_function__
+[0;36m(EngineCore_DP0 pid=142576)[0;0m     return func(*args, **kwargs)
+[0;36m(EngineCore_DP0 pid=142576)[0;0m            ^^^^^^^^^^^^^^^^^^^^^
+[0;36m(EngineCore_DP0 pid=142576)[0;0m torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 160.00 MiB. GPU 0 has a total capacity of 79.25 GiB of which 110.62 MiB is free. Including non-PyTorch memory, this process has 79.12 GiB memory in use. Of the allocated memory 78.62 GiB is allocated by PyTorch, and 1.91 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)
+Traceback (most recent call last):
+  File "/pfs/work9/workspace/scratch/ma_anhnnguy-topic_modeling_data/RAI/run_bias_evaluation.py", line 584, in <module>
+    main()
+  File "/pfs/work9/workspace/scratch/ma_anhnnguy-topic_modeling_data/RAI/run_bias_evaluation.py", line 570, in main
+    run_evaluation(
+  File "/pfs/work9/workspace/scratch/ma_anhnnguy-topic_modeling_data/RAI/run_bias_evaluation.py", line 331, in run_evaluation
+    llm = LLM(**llm_kwargs)
+          ^^^^^^^^^^^^^^^^^
+  File "/pfs/work9/workspace/scratch/ma_anhnnguy-topic_modeling_data/RAI/venv/lib/python3.11/site-packages/vllm/entrypoints/llm.py", line 351, in __init__
+    self.llm_engine = LLMEngine.from_engine_args(
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/pfs/work9/workspace/scratch/ma_anhnnguy-topic_modeling_data/RAI/venv/lib/python3.11/site-packages/vllm/v1/engine/llm_engine.py", line 183, in from_engine_args
+    return cls(
+           ^^^^
+  File "/pfs/work9/workspace/scratch/ma_anhnnguy-topic_modeling_data/RAI/venv/lib/python3.11/site-packages/vllm/v1/engine/llm_engine.py", line 109, in __init__
+    self.engine_core = EngineCoreClient.make_client(
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/pfs/work9/workspace/scratch/ma_anhnnguy-topic_modeling_data/RAI/venv/lib/python3.11/site-packages/vllm/v1/engine/core_client.py", line 93, in make_client
+    return SyncMPClient(vllm_config, executor_class, log_stats)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/pfs/work9/workspace/scratch/ma_anhnnguy-topic_modeling_data/RAI/venv/lib/python3.11/site-packages/vllm/v1/engine/core_client.py", line 648, in __init__
+    super().__init__(
+  File "/pfs/work9/workspace/scratch/ma_anhnnguy-topic_modeling_data/RAI/venv/lib/python3.11/site-packages/vllm/v1/engine/core_client.py", line 477, in __init__
+    with launch_core_engines(vllm_config, executor_class, log_stats) as (
+  File "/opt/bwhpc/common/devel/python/3.11.7_gnu_14.2/lib/python3.11/contextlib.py", line 144, in __exit__
+    next(self.gen)
+  File "/pfs/work9/workspace/scratch/ma_anhnnguy-topic_modeling_data/RAI/venv/lib/python3.11/site-packages/vllm/v1/engine/utils.py", line 903, in launch_core_engines
+    wait_for_engine_startup(
+  File "/pfs/work9/workspace/scratch/ma_anhnnguy-topic_modeling_data/RAI/venv/lib/python3.11/site-packages/vllm/v1/engine/utils.py", line 960, in wait_for_engine_startup
+    raise RuntimeError(
+RuntimeError: Engine core initialization failed. See root cause above. Failed core proc(s): {}

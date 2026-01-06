@@ -1,0 +1,71 @@
+/pfs/work9/workspace/scratch/ma_anhnnguy-topic_modeling_data/RAI/venv/lib/python3.11/site-packages/transformers/utils/hub.py:110: FutureWarning: Using `TRANSFORMERS_CACHE` is deprecated and will be removed in v5 of Transformers. Use `HF_HOME` instead.
+  warnings.warn(
+Note: Environment variable`HF_TOKEN` is set and is the current active token independently from the token you've just configured.
+[2025-12-28 14:37:05] WARNING _login.py:409: Note: Environment variable`HF_TOKEN` is set and is the current active token independently from the token you've just configured.
+The argument `trust_remote_code` is to be used with Auto classes. It has no effect here and is ignored.
+[0;36m(EngineCore_DP0 pid=396242)[0;0m Process EngineCore_DP0:
+[0;36m(EngineCore_DP0 pid=396242)[0;0m Traceback (most recent call last):
+[0;36m(EngineCore_DP0 pid=396242)[0;0m   File "/opt/bwhpc/common/devel/python/3.11.7_gnu_14.2/lib/python3.11/multiprocessing/process.py", line 314, in _bootstrap
+[0;36m(EngineCore_DP0 pid=396242)[0;0m     self.run()
+[0;36m(EngineCore_DP0 pid=396242)[0;0m   File "/opt/bwhpc/common/devel/python/3.11.7_gnu_14.2/lib/python3.11/multiprocessing/process.py", line 108, in run
+[0;36m(EngineCore_DP0 pid=396242)[0;0m     self._target(*self._args, **self._kwargs)
+[0;36m(EngineCore_DP0 pid=396242)[0;0m   File "/pfs/work9/workspace/scratch/ma_anhnnguy-topic_modeling_data/RAI/venv/lib/python3.11/site-packages/vllm/v1/engine/core.py", line 870, in run_engine_core
+[0;36m(EngineCore_DP0 pid=396242)[0;0m     raise e
+[0;36m(EngineCore_DP0 pid=396242)[0;0m   File "/pfs/work9/workspace/scratch/ma_anhnnguy-topic_modeling_data/RAI/venv/lib/python3.11/site-packages/vllm/v1/engine/core.py", line 857, in run_engine_core
+[0;36m(EngineCore_DP0 pid=396242)[0;0m     engine_core = EngineCoreProc(*args, **kwargs)
+[0;36m(EngineCore_DP0 pid=396242)[0;0m                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[0;36m(EngineCore_DP0 pid=396242)[0;0m   File "/pfs/work9/workspace/scratch/ma_anhnnguy-topic_modeling_data/RAI/venv/lib/python3.11/site-packages/vllm/v1/engine/core.py", line 637, in __init__
+[0;36m(EngineCore_DP0 pid=396242)[0;0m     super().__init__(
+[0;36m(EngineCore_DP0 pid=396242)[0;0m   File "/pfs/work9/workspace/scratch/ma_anhnnguy-topic_modeling_data/RAI/venv/lib/python3.11/site-packages/vllm/v1/engine/core.py", line 102, in __init__
+[0;36m(EngineCore_DP0 pid=396242)[0;0m     self.model_executor = executor_class(vllm_config)
+[0;36m(EngineCore_DP0 pid=396242)[0;0m                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[0;36m(EngineCore_DP0 pid=396242)[0;0m   File "/pfs/work9/workspace/scratch/ma_anhnnguy-topic_modeling_data/RAI/venv/lib/python3.11/site-packages/vllm/v1/executor/abstract.py", line 101, in __init__
+[0;36m(EngineCore_DP0 pid=396242)[0;0m     self._init_executor()
+[0;36m(EngineCore_DP0 pid=396242)[0;0m   File "/pfs/work9/workspace/scratch/ma_anhnnguy-topic_modeling_data/RAI/venv/lib/python3.11/site-packages/vllm/v1/executor/uniproc_executor.py", line 47, in _init_executor
+[0;36m(EngineCore_DP0 pid=396242)[0;0m     self.driver_worker.init_device()
+[0;36m(EngineCore_DP0 pid=396242)[0;0m   File "/pfs/work9/workspace/scratch/ma_anhnnguy-topic_modeling_data/RAI/venv/lib/python3.11/site-packages/vllm/v1/worker/worker_base.py", line 326, in init_device
+[0;36m(EngineCore_DP0 pid=396242)[0;0m     self.worker.init_device()  # type: ignore
+[0;36m(EngineCore_DP0 pid=396242)[0;0m     ^^^^^^^^^^^^^^^^^^^^^^^^^
+[0;36m(EngineCore_DP0 pid=396242)[0;0m   File "/pfs/work9/workspace/scratch/ma_anhnnguy-topic_modeling_data/RAI/venv/lib/python3.11/site-packages/vllm/v1/worker/gpu_worker.py", line 216, in init_device
+[0;36m(EngineCore_DP0 pid=396242)[0;0m     current_platform.set_device(self.device)
+[0;36m(EngineCore_DP0 pid=396242)[0;0m   File "/pfs/work9/workspace/scratch/ma_anhnnguy-topic_modeling_data/RAI/venv/lib/python3.11/site-packages/vllm/platforms/cuda.py", line 123, in set_device
+[0;36m(EngineCore_DP0 pid=396242)[0;0m     torch.cuda.set_device(device)
+[0;36m(EngineCore_DP0 pid=396242)[0;0m   File "/pfs/work9/workspace/scratch/ma_anhnnguy-topic_modeling_data/RAI/venv/lib/python3.11/site-packages/torch/cuda/__init__.py", line 567, in set_device
+[0;36m(EngineCore_DP0 pid=396242)[0;0m     torch._C._cuda_setDevice(device)
+[0;36m(EngineCore_DP0 pid=396242)[0;0m torch.AcceleratorError: CUDA error: CUDA-capable device(s) is/are busy or unavailable
+[0;36m(EngineCore_DP0 pid=396242)[0;0m Search for `cudaErrorDevicesUnavailable' in https://docs.nvidia.com/cuda/cuda-runtime-api/group__CUDART__TYPES.html for more information.
+[0;36m(EngineCore_DP0 pid=396242)[0;0m CUDA kernel errors might be asynchronously reported at some other API call, so the stacktrace below might be incorrect.
+[0;36m(EngineCore_DP0 pid=396242)[0;0m For debugging consider passing CUDA_LAUNCH_BLOCKING=1
+[0;36m(EngineCore_DP0 pid=396242)[0;0m Compile with `TORCH_USE_CUDA_DSA` to enable device-side assertions.
+[0;36m(EngineCore_DP0 pid=396242)[0;0m 
+Traceback (most recent call last):
+  File "/pfs/work9/workspace/scratch/ma_anhnnguy-topic_modeling_data/RAI/run_bias_evaluation.py", line 584, in <module>
+    main()
+  File "/pfs/work9/workspace/scratch/ma_anhnnguy-topic_modeling_data/RAI/run_bias_evaluation.py", line 570, in main
+    run_evaluation(
+  File "/pfs/work9/workspace/scratch/ma_anhnnguy-topic_modeling_data/RAI/run_bias_evaluation.py", line 331, in run_evaluation
+    llm = LLM(**llm_kwargs)
+          ^^^^^^^^^^^^^^^^^
+  File "/pfs/work9/workspace/scratch/ma_anhnnguy-topic_modeling_data/RAI/venv/lib/python3.11/site-packages/vllm/entrypoints/llm.py", line 351, in __init__
+    self.llm_engine = LLMEngine.from_engine_args(
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/pfs/work9/workspace/scratch/ma_anhnnguy-topic_modeling_data/RAI/venv/lib/python3.11/site-packages/vllm/v1/engine/llm_engine.py", line 183, in from_engine_args
+    return cls(
+           ^^^^
+  File "/pfs/work9/workspace/scratch/ma_anhnnguy-topic_modeling_data/RAI/venv/lib/python3.11/site-packages/vllm/v1/engine/llm_engine.py", line 109, in __init__
+    self.engine_core = EngineCoreClient.make_client(
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/pfs/work9/workspace/scratch/ma_anhnnguy-topic_modeling_data/RAI/venv/lib/python3.11/site-packages/vllm/v1/engine/core_client.py", line 93, in make_client
+    return SyncMPClient(vllm_config, executor_class, log_stats)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/pfs/work9/workspace/scratch/ma_anhnnguy-topic_modeling_data/RAI/venv/lib/python3.11/site-packages/vllm/v1/engine/core_client.py", line 648, in __init__
+    super().__init__(
+  File "/pfs/work9/workspace/scratch/ma_anhnnguy-topic_modeling_data/RAI/venv/lib/python3.11/site-packages/vllm/v1/engine/core_client.py", line 477, in __init__
+    with launch_core_engines(vllm_config, executor_class, log_stats) as (
+  File "/opt/bwhpc/common/devel/python/3.11.7_gnu_14.2/lib/python3.11/contextlib.py", line 144, in __exit__
+    next(self.gen)
+  File "/pfs/work9/workspace/scratch/ma_anhnnguy-topic_modeling_data/RAI/venv/lib/python3.11/site-packages/vllm/v1/engine/utils.py", line 903, in launch_core_engines
+    wait_for_engine_startup(
+  File "/pfs/work9/workspace/scratch/ma_anhnnguy-topic_modeling_data/RAI/venv/lib/python3.11/site-packages/vllm/v1/engine/utils.py", line 960, in wait_for_engine_startup
+    raise RuntimeError(
+RuntimeError: Engine core initialization failed. See root cause above. Failed core proc(s): {}

@@ -1,0 +1,55 @@
+Log files: logs/visa_wall_2698258.out/err (Mode: custom)
+==========================================
+THE VISA WALL: LLM BIAS EVALUATION
+==========================================
+Job ID: 2698258
+Job Name: visa_wall_bias
+Node: uc2n570
+Partition: gpu_a100_short
+GPU(s): 2
+CPUs: 
+Memory:  MB
+Workspace: /pfs/work9/workspace/scratch/ma_anhnnguy-topic_modeling_data/RAI
+Start Time: Sun Dec 28 01:50:37 PM CET 2025
+==========================================
+
+Loading modules...
+Modules loaded ✓
+
+Setting up Python environment...
+Activated venv: /pfs/work9/workspace/scratch/ma_anhnnguy-topic_modeling_data/RAI/venv
+
+Model Cache Configuration:
+  Model cache workspace: /pfs/work9/workspace/scratch/ma_anhnnguy-model_cache
+  HF_HOME: /pfs/work9/workspace/scratch/ma_anhnnguy-model_cache/huggingface_cache
+  Models will be cached persistently across jobs
+
+Clearing stale caches from previous jobs...
+  Cache cleanup complete ✓
+
+Cache directories configured (job-local in $TMPDIR):
+  TMPDIR: /scratch/slurm_tmpdir/job_2698258
+  SLURM_JOB_ID: 2698258
+  HF_HOME: /pfs/work9/workspace/scratch/ma_anhnnguy-model_cache/huggingface_cache (persistent)
+  TRANSFORMERS_CACHE: /pfs/work9/workspace/scratch/ma_anhnnguy-model_cache/huggingface_cache/hub (persistent)
+  TORCH_COMPILE_CACHE_DIR: /scratch/slurm_tmpdir/job_2698258/torch_compile_2698258 (job-local)
+  VLLM_CACHE_ROOT: /scratch/slurm_tmpdir/job_2698258/vllm_2698258 (job-local)
+
+Environment Information:
+  Python version: Python 3.11.7
+  Python path: /pfs/work9/workspace/scratch/ma_anhnnguy-topic_modeling_data/RAI/venv/bin/python
+
+============================= JOB FEEDBACK =============================
+
+NodeName=uc2n570
+Job ID: 2698258
+Cluster: uc3
+User/Group: ma_anhnnguy/ma_ma
+State: CANCELLED (exit code 0)
+Nodes: 1
+Cores per node: 48
+CPU Utilized: 00:00:00
+CPU Efficiency: 0.00% of 00:39:12 core-walltime
+Job Wall-clock time: 00:00:49
+Memory Utilized: 372.17 MB
+Memory Efficiency: 0.20% of 183.59 GB (183.59 GB/node)

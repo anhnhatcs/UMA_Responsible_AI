@@ -1,0 +1,108 @@
+Log files: logs/visa_wall_2686466.out/err (Mode: custom)
+==========================================
+THE VISA WALL: LLM BIAS EVALUATION
+==========================================
+Job ID: 2686466
+Job Name: visa_wall_bias
+Node: uc2n903
+Partition: gpu_a100_il
+GPU(s): 3
+CPUs: 
+Memory:  MB
+Workspace: /pfs/work9/workspace/scratch/ma_anhnnguy-topic_modeling_data/RAI
+Start Time: Sun Dec 28 03:34:45 AM CET 2025
+==========================================
+
+Loading modules...
+Modules loaded ✓
+
+Setting up Python environment...
+Activated venv: /pfs/work9/workspace/scratch/ma_anhnnguy-topic_modeling_data/RAI/venv
+
+Model Cache Configuration:
+  Model cache workspace: /pfs/work9/workspace/scratch/ma_anhnnguy-model_cache
+  HF_HOME: /pfs/work9/workspace/scratch/ma_anhnnguy-model_cache/huggingface_cache
+  Models will be cached persistently across jobs
+
+Clearing stale caches from previous jobs...
+  Cache cleanup complete ✓
+
+Cache directories configured (job-local in $TMPDIR):
+  TMPDIR: /scratch/slurm_tmpdir/job_2686466
+  SLURM_JOB_ID: 2686466
+  HF_HOME: /pfs/work9/workspace/scratch/ma_anhnnguy-model_cache/huggingface_cache (persistent)
+  TRANSFORMERS_CACHE: /pfs/work9/workspace/scratch/ma_anhnnguy-model_cache/huggingface_cache/hub (persistent)
+  TORCH_COMPILE_CACHE_DIR: /scratch/slurm_tmpdir/job_2686466/torch_compile_2686466 (job-local)
+  VLLM_CACHE_ROOT: /scratch/slurm_tmpdir/job_2686466/vllm_2686466 (job-local)
+
+Environment Information:
+  Python version: Python 3.11.7
+  Python path: /pfs/work9/workspace/scratch/ma_anhnnguy-topic_modeling_data/RAI/venv/bin/python
+  vLLM version: 0.13.0
+  CUDA version: V12.8.61
+
+GPU Information:
+NVIDIA A100 80GB PCIe, 81920 MiB, 81132 MiB, 32
+NVIDIA A100 80GB PCIe, 81920 MiB, 81132 MiB, 32
+NVIDIA A100 80GB PCIe, 81920 MiB, 81132 MiB, 33
+==========================================
+
+Pre-flight Checks:
+  Python script: /pfs/work9/workspace/scratch/ma_anhnnguy-topic_modeling_data/RAI/run_bias_evaluation.py
+  Config file: /pfs/work9/workspace/scratch/ma_anhnnguy-topic_modeling_data/RAI/config.yaml
+  Output dir: /pfs/work9/workspace/scratch/ma_anhnnguy-topic_modeling_data/RAI/results
+  All packages OK ✓
+==========================================
+
+Run Mode: custom
+Runs per candidate: 30
+==========================================
+Running custom models: llama31-70b
+Extra-large model detected (70B) - using tensor_parallel=3, gpu_memory=0.85
+
+Executing command:
+python /pfs/work9/workspace/scratch/ma_anhnnguy-topic_modeling_data/RAI/run_bias_evaluation.py             --config /pfs/work9/workspace/scratch/ma_anhnnguy-topic_modeling_data/RAI/config.yaml             --models llama31-70b             --runs 30             --output /pfs/work9/workspace/scratch/ma_anhnnguy-topic_modeling_data/RAI/results             --gpu-memory 0.85             --tensor-parallel 3             --max-model-len 4096
+==========================================
+✓ Logged in to HuggingFace successfully
+============================================================
+THE VISA WALL: LLM Bias Evaluation
+============================================================
+Config: /pfs/work9/workspace/scratch/ma_anhnnguy-topic_modeling_data/RAI/config.yaml
+Models: ['llama31-70b']
+Candidates: ['anonymous', 'lukas', 'andrei', 'mehmet', 'minh', 'wei']
+Runs per candidate: 30
+Output directory: /pfs/work9/workspace/scratch/ma_anhnnguy-topic_modeling_data/RAI/results
+Mitigation tests: True
+Max model length: 4096
+
+============================================================
+Loading model: llama31-70b (meta-llama/Llama-3.1-70B-Instruct)
+============================================================
+  Using max_model_len: 4096
+WARNING 12-28 03:38:13 [attention.py:82] Using VLLM_ATTENTION_BACKEND environment variable is deprecated and will be removed in v0.14.0 or v1.0.0, whichever is soonest. Please use --attention-config.backend command line argument or AttentionConfig(backend=...) config field instead.
+INFO 12-28 03:38:13 [utils.py:253] non-default args: {'trust_remote_code': True, 'max_model_len': 4096, 'tensor_parallel_size': 3, 'gpu_memory_utilization': 0.85, 'disable_log_stats': True, 'model': 'meta-llama/Llama-3.1-70B-Instruct'}
+INFO 12-28 03:38:38 [model.py:514] Resolved architecture: LlamaForCausalLM
+INFO 12-28 03:38:38 [model.py:1661] Using max model len 4096
+
+==========================================
+✗ Job failed with exit code: 1
+  End Time: Sun Dec 28 03:38:46 AM CET 2025
+
+Check logs for details:
+  /pfs/work9/workspace/scratch/ma_anhnnguy-topic_modeling_data/RAI/logs/visa_wall_2686466.err
+==========================================
+
+============================= JOB FEEDBACK =============================
+
+NodeName=uc2n903
+Job ID: 2686466
+Cluster: uc3
+User/Group: ma_anhnnguy/ma_ma
+State: FAILED (exit code 1)
+Nodes: 1
+Cores per node: 96
+CPU Utilized: 00:00:48
+CPU Efficiency: 0.20% of 06:43:12 core-walltime
+Job Wall-clock time: 00:04:12
+Memory Utilized: 1.02 GB
+Memory Efficiency: 0.27% of 373.54 GB (373.54 GB/node)

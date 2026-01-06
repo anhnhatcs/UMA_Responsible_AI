@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.7.16)  5 JAN 2026 17:44
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.7.16)  6 JAN 2026 15:26
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -462,8 +462,7 @@ LaTeX Font Info:    Trying to load font information for U+msa on input line 45.
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 ) (/usr/local/texlive/2024/texmf-dist/tex/latex/microtype/mt-msa.cfg
 File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
-)
-LaTeX Font Info:    Trying to load font information for U+msb on input line 45.
+oad font information for U+msb on input line 45.
  (/usr/local/texlive/2024/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) (/usr/local/texlive/2024/texmf-dist/tex/latex/microtype/mt-msb.cfg
@@ -479,22 +478,88 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `zi4' (encoding: T1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
+
+
+Package natbib Warning: Citation `federal2024bluecard' on page 1 undefined on input line 54.
+
+
+Package natbib Warning: Citation `bui2025dialects' on page 1 undefined on input line 56.
+
+
+Package natbib Warning: Citation `rao2025invisible' on page 1 undefined on input line 56.
+
+
+Package natbib Warning: Citation `bui2025dialects' on page 1 undefined on input line 62.
+
 LaTeX Font Info:    Font shape `T1/zi4/m/n' will be
 (Font)              scaled to size 10.95pt on input line 68.
- [1{/usr/local/texlive/2024/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/base/8r.enc}{/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/inconsolata/i4-t1-0.enc}
+
+Package natbib Warning: Citation `bui2025dialects' on page 1 undefined on input line 68.
+
+[1{/usr/local/texlive/2024/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/base/8r.enc}{/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/inconsolata/i4-t1-0.enc}
 
 
 
 ]
+
+Package natbib Warning: Citation `bolukbasi2016man' on page 2 undefined on input line 72.
+
+
+Package natbib Warning: Citation `blodgett2020language' on page 2 undefined on input line 72.
+
+
+Package natbib Warning: Citation `schick2021self' on page 2 undefined on input line 72.
+
+
+Package natbib Warning: Citation `bui2025dialects' on page 2 undefined on input line 72.
+
+
+Package natbib Warning: Citation `rao2025invisible' on page 2 undefined on input line 74.
+
+
+Package natbib Warning: Citation `bertrand2004emily' on page 2 undefined on input line 80.
+
 LaTeX Font Info:    Trying to load font information for TS1+ptm on input line 86.
- (/usr/local/texlive/2024/texmf-dist/tex/latex/psnfss/ts1ptm.fd
+(/usr/local/texlive/2024/texmf-dist/tex/latex/psnfss/ts1ptm.fd
 File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
 )
-Underfull \hbox (badness 2653) in paragraph at lines 99--100
-\T1/ptm/m/n/10.95 (+20) Equal Em-ploy-ment Op-por-tu-nity Com-mis-sion[][],
+
+Package natbib Warning: Citation `gemma2024' on page 2 undefined on input line 95.
+
+
+Package natbib Warning: Citation `llama31' on page 2 undefined on input line 95.
+
+
+Package natbib Warning: Citation `mistral2023' on page 2 undefined on input line 95.
+
+
+Package natbib Warning: Citation `mistral-medium2024' on page 2 undefined on input line 95.
+
+
+Package natbib Warning: Citation `ministral2024' on page 2 undefined on input line 95.
+
+
+Package natbib Warning: Citation `qwen2024' on page 2 undefined on input line 95.
+
+
+Package natbib Warning: Citation `qwen3report' on page 2 undefined on input line 95.
+
+
+Package natbib Warning: Citation `eeoc1978' on page 2 undefined on input line 99.
+
+
+Underfull \hbox (badness 2884) in paragraph at lines 112--113
+\T1/ptm/m/n/10.95 (+20) cause mod-els may ra-tio-nal-ize dis-crim-i-na-tion
  []
 
 [2]
+
+LaTeX Warning: Reference `tab:air_violations' on page 3 undefined on input line 121.
+
+
+LaTeX Warning: Reference `tab:hallucination' on page 3 undefined on input line 145.
+
+
 Underfull \hbox (badness 10000) in paragraph at lines 179--180
 \T1/ptm/m/n/10.95 (+20) The fol-low-ing ex-am-ple from
  []
@@ -516,6 +581,7 @@ Underfull \hbox (badness 6268) in paragraph at lines 182--185
 
 LaTeX Font Info:    Font shape `T1/zi4/b/n' will be
 (Font)              scaled to size 10.95pt on input line 193.
+[size 10.95pt on input line 193.
 [3]
 Underfull \hbox (badness 10000) in paragraph at lines 227--228
 []\T1/ptm/m/n/10.95 (+20) This re-sponse from
@@ -532,6 +598,22 @@ Underfull \hbox (badness 1137) in paragraph at lines 227--228
  []
 
 [4]
+
+Package natbib Warning: Citation `bui2025dialects' on page 5 undefined on input line 242.
+
+
+LaTeX Warning: Reference `tab:size_effects' on page 5 undefined on input line 242.
+
+
+Package natbib Warning: Citation `bui2025dialects' on page 5 undefined on input line 260.
+
+
+LaTeX Warning: Reference `tab:affinity' on page 5 undefined on input line 266.
+
+
+LaTeX Warning: Reference `tab:reasoning' on page 5 undefined on input line 291.
+
+
 Underfull \hbox (badness 4660) in paragraph at lines 310--311
 []\T1/ptm/m/n/10.95 (+20) Contrary to ex-pec-ta-tions, rea-son-ing mod-
  []
@@ -551,12 +633,22 @@ Underfull \hbox (badness 10000) in paragraph at lines 310--311
 \T1/zi4/m/n/10.95 ministral-14b-reasoning \T1/ptm/m/n/10.95 (+20) shows ex-treme
  []
 
-[5] [6]
+[5]
+
+Package natbib Warning: Citation `bui2025dialects' on page 6 undefined on input line 332.
+
+
+Underfull \vbox (badness 5696) has occurred while \output is active []
+
+ [6]
 Underfull \hbox (badness 2065) in paragraph at lines 362--363
 \T1/ptm/m/n/10.95 (+20) and the Uni-ver-si-ties of the State of Baden-
  []
 
 (./emnlp2023.bbl
+Underfull \vbox (badness 2735) has occurred while \output is active []
+
+
 Underfull \hbox (badness 1430) in paragraph at lines 15--18
 []\T1/ptm/m/n/10 (+20) Tolga Boluk-basi, Kai-Wei Chang, James Y Zou,
  []
@@ -567,33 +659,153 @@ Underfull \hbox (badness 1377) in paragraph at lines 20--23
  []
 
 [7])
+
+LaTeX Warning: Reference `tab:samples' on page 8 undefined on input line 372.
+
+
 Underfull \hbox (badness 6125) in paragraph at lines 407--408
 []\T1/ptm/b/n/10.95 (+20) Candidate Tem-plate (Ex-am-ple: Lukas
  []
 
 [8
 
-] [9] (./emnlp2023.aux)
+] [9]
+
+./emnlp2023.tex:427: LaTeX Error: Environment tabularx undefined.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.427 	\begin{tabularx}
+                       {\textwidth}{lXlc}
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+./emnlp2023.tex:427: Missing number, treated as zero.
+<to be read again> 
+                   }
+l.427 	\begin{tabularx}{\textwidth}
+                                   {lXlc}
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+./emnlp2023.tex:427: Illegal unit of measure (pt inserted).
+<to be read again> 
+                   }
+l.427 	\begin{tabularx}{\textwidth}
+                                   {lXlc}
+Dimensions can be in units of em, ex, in, pt, pc,
+cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
+I'll assume that you meant to say pt, for printer's points.
+To recover gracefully from this error, it's best to
+delete the erroneous units; e.g., type `2' to delete
+two letters. (See Chapter 27 of The TeXbook.)
+
+./emnlp2023.tex:428: Misplaced \noalign.
+\toprule ->\noalign 
+                    {\ifnum 0=`}\fi \@aboverulesep =\abovetopsep \global \@b...
+l.428 		\toprule
+                
+I expect to see \noalign only after the \cr of
+an alignment. Proceed, and I'll ignore this case.
+
+./emnlp2023.tex:429: Misplaced alignment tab character &.
+l.429 		Tool &
+               Purpose \& Where? \& Useful? \\
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+./emnlp2023.tex:430: Misplaced \noalign.
+\midrule ->\noalign 
+                    {\ifnum 0=`}\fi \@aboverulesep =\aboverulesep \global \@...
+l.430 		\midrule
+                
+I expect to see \noalign only after the \cr of
+an alignment. Proceed, and I'll ignore this case.
+
+./emnlp2023.tex:431: Misplaced alignment tab character &.
+l.431 ...& Academic rephrasing \& Report writing &
+                                                   ++ \\
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+./emnlp2023.tex:436: Misplaced \noalign.
+\bottomrule ->\noalign 
+                       {\ifnum 0=`}\fi \@aboverulesep =\aboverulesep \global...
+l.436 		\bottomrule
+                   
+I expect to see \noalign only after the \cr of
+an alignment. Proceed, and I'll ignore this case.
+
+
+./emnlp2023.tex:437: LaTeX Error: \begin{center} on input line 425 ended by \end{tabularx}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.437 	\end{tabularx}
+                     
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+Package natbib Warning: There were undefined citations.
+
+[10
+
+
+
+] (./emnlp2023.aux
+
+Package natbib Warning: Citation(s) may have changed.
+(natbib)                Rerun to get citations correct.
+
+)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-02-20>
  ***********
+
+
+LaTeX Warning: There were undefined references.
+
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
 Package rerunfilecheck Info: File `emnlp2023.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 15191 strings out of 474116
- 238802 string characters out of 5743682
+ 15209 strings out of 474116
+ 239030 string characters out of 5743682
  1947187 words of memory out of 5000000
- 36901 multiletter control sequences out of 15000+600000
- 621551 words of font info for 337 fonts, out of 8000000 for 9000
+ 36905 multiletter control sequences out of 15000+600000
+ 622062 words of font info for 345 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 90i,10n,93p,1006b,609s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 90i,10n,93p,1006b,605s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2024/texmf-dist/fonts/type1/public/inconsolata/Inconsolata-zi4b.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/inconsolata/Inconsolata-zi4r.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on emnlp2023.pdf (9 pages, 192490 bytes).
+Output written on emnlp2023.pdf (10 pages, 192178 bytes).
 PDF statistics:
- 232 PDF objects out of 1000 (max. 8388607)
- 193 compressed objects within 2 object streams
- 65 named destinations out of 1000 (max. 500000)
+ 189 PDF objects out of 1000 (max. 8388607)
+ 149 compressed objects within 2 object streams
+ 67 named destinations out of 1000 (max. 500000)
+ 57857 words of extra memory for PDF output out of 61914 (max. 10000000)
+
+ 1000 (max. 8388607)
+ 149 compressed objects within 2 object streams
+ 67 named destinations out of 1000 (max. 500000)
  57857 words of extra memory for PDF output out of 61914 (max. 10000000)
 

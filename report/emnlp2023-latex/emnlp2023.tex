@@ -53,7 +53,7 @@ Our results show that: (1) models frequently hallucinate visa requirements; for 
 
 The German labor market faces persistent skilled worker shortages, with the Blue Card system designed to attract qualified non-EU professionals. Unlike the US H-1B system, German Blue Cards place the administrative burden on employees rather than employers---companies need not ``sponsor'' visas \citep{federal2024bluecard}. However, despite these favorable conditions, non-EU candidates may still face disadvantages if hiring decisions are influenced by AI systems that incorrectly associate foreign origins with bureaucratic complexity.
 
-This concern is amplified by recent findings on LLM discrimination. \citet{bui2025dialects} demonstrated that LLMs exhibit significant bias against German dialect speakers, associating them with negative traits like ``uneducated'' and ``rural.'' Critically, they found that larger models (e.g., Llama-3.1 70B) amplify these biases compared to smaller variants. Similarly, \citet{rao2025invisible} documented Western-centric cultural bias in LLM hiring recommendations. However, nationality-based discrimination in European labor market contexts remains understudied.
+Recent findings on LLM discrimination amplify this concern. Bui et al. \citep{bui2025dialects} demonstrated that LLMs exhibit significant bias against German dialect speakers, associating them with negative traits like ``uneducated'' and ``rural.'' Critically, they found that larger models (e.g., Llama-3.1 70B) amplify these biases compared to smaller variants. Similarly, \citet{rao2025invisible} documented Western-centric cultural bias in LLM hiring recommendations. However, nationality-based discrimination in German labor market contexts remains understudied.
 
 We address this gap by investigating whether LLMs exhibit what we term the \textbf{``Visa Wall''}---the tendency to penalize non-EU candidates by hallucinating administrative barriers not present in job descriptions. We measure bias in 11 LLMs across five candidate nationalities: German, Romanian (EU), Turkish, Vietnamese, and Chinese (non-EU). We focus specifically on the German context because (1) it offers a natural experiment comparing EU and non-EU foreigners under different legal frameworks, and (2) German-language prompts may reveal biases not apparent in English-only evaluations. Specifically, we test four hypotheses:
 
@@ -81,7 +81,7 @@ We employ a correspondence test design, the gold standard in employment discrimi
 
 \subsection{Candidate Personas}
 
-We construct five personas representing distinct legal categories in the German labor market. Names were selected based on high frequency in their respective countries to maximize representativeness:
+We construct five personas representing distinct legal categories in the German labor market. We selected names based on their high frequency in respective countries to maximize representativeness:
 \begin{itemize}
     \item \textbf{Lukas M{\"u}ller} (Munich, Germany) --- Native baseline. "M{\"u}ller" is the most common surname in Germany.
     \item \textbf{Andrei Popescu} (Bucharest, Romania) --- EU citizen with free movement rights. "Popescu" is the most common surname in Romania.
@@ -96,20 +96,20 @@ We evaluate 11 models spanning four families: Gemma \citep{gemma2024} (9B, 27B),
 
 \subsection{Evaluation Metrics}
 
-Following US EEOC Uniform Guidelines \citep{eeoc1978} and recent NLP fairness work, we compute:
+To measure discrimination objectively and detect legally actionable bias, we adopt three metrics from employment law and NLP fairness research. Following US EEOC Uniform Guidelines \citep{eeoc1978}, we compute:
 
-\textbf{Adverse Impact Ratio (AIR):} The ratio of minority to majority selection rates. AIR $<$ 0.80 constitutes legally actionable discrimination under the ``4/5ths rule.''
+\textbf{Adverse Impact Ratio (AIR):} We measure this ratio because US employment law uses it to detect discrimination. The ratio of minority to majority selection rates below 0.80 constitutes legally actionable discrimination under the ``4/5ths rule.''
 \begin{equation}
 AIR = \frac{P(\text{Hire} \mid \text{Minority})}{P(\text{Hire} \mid \text{Majority})}
 \end{equation}
 
-\textbf{Average Treatment Effect (ATE):} The score difference between minority and majority groups, measuring the ``penalty'' associated with a particular identity.
+\textbf{Average Treatment Effect (ATE):} We compute this to quantify the exact hiring penalty each nationality faces. The score difference between minority and majority groups directly measures discrimination magnitude.
 \begin{equation}
 ATE = E[Y \mid T=1] - E[Y \mid T=0]
 \end{equation}
 where $Y$ is the hiring score and $T$ is the group membership indicator.
 
-\textbf{Hallucination Rate (HR):} The proportion of responses mentioning visa requirements despite their absence from the job description.
+\textbf{Hallucination Rate (HR):} We track this because models may rationalize discrimination through false administrative barriers. We measure the proportion of responses mentioning visa requirements despite their absence from the job description.
 \begin{equation}
 HR = \frac{1}{N} \sum_{i=1}^{N} \mathbb{I}(\text{"visa"} \in \text{Response}_i)
 \end{equation}
@@ -257,7 +257,7 @@ Llama & 8B $\rightarrow$ 70B & Fair $\rightarrow$ Fair & Stable \\
 \end{tabular}
 \end{table*}
 
-Most dramatically, \texttt{qwen3-4b} violates the EEOC 4/5ths rule (AIR = 0.72) while \texttt{qwen3-30b} achieves perfect fairness (AIR = 1.00) across all candidates. This suggests that RLHF training at scale successfully mitigates nationality-based biases, contradicting the scale-bias correlation observed in dialect discrimination tasks.
+The Qwen family demonstrates this pattern most dramatically: \texttt{qwen3-4b} violates the EEOC 4/5ths rule (AIR = 0.72) while \texttt{qwen3-30b} achieves perfect fairness (AIR = 1.00) across all candidates. We conclude that RLHF training at scale successfully mitigates nationality-based biases, contradicting the scale-bias correlation that Bui et al. \citep{bui2025dialects} observed in dialect discrimination tasks.
 
 Interestingly, we observe a divergence between hallucination and discrimination in small models. \texttt{qwen3-4b} exhibits severe discrimination (AIR = 0.72) with minimal hallucination (2\%), suggesting implicit bias. In contrast, \texttt{ministral-8b} shows extreme hallucination (60\%) but maintains fair scoring (AIR = 0.99), indicating that while the model is confused about facts, this confusion is not translated into hiring penalties.
 
@@ -321,15 +321,15 @@ Our analysis reveals distinct bias patterns that correlate with model developmen
 
 \textbf{Chinese Models (Qwen):} Display dramatic improvement with scale, from severe EEOC violations (qwen3-4b: AIR = 0.72) to perfect fairness (qwen3-30b: AIR = 1.00). This aligns with the Qwen 2.5 technical report, which emphasizes extensive Reinforcement Learning from Human Feedback (RLHF) to align model outputs with human values. The stark contrast between the 4B and 30B models suggests that this alignment process is highly effective at mitigating nationality bias when sufficient model capacity is available. However, even the largest model exhibits hallucination rates of 14\%, indicating persistent confusion about EU immigration law.
 
-These regional patterns highlight how training data locality can embed specific legal and cultural assumptions into model behavior, creating systematic biases that reflect the geographic context of development teams and data sources.
+We conclude that training data locality embeds specific legal and cultural assumptions into model behavior. Development teams and data sources from different regions create systematic biases reflecting their geographic contexts.
 
 \subsection{The ``Bureaucratic Hallucination'' Phenomenon}
 
-Our results reframe the ``Visa Wall'' as a more general \textbf{bureaucratic hallucination}---models associate foreign origins with administrative complexity regardless of actual legal frameworks. The paradox of EU citizens facing higher hallucination rates than non-EU candidates suggests training data conflation of US immigration complexity with European free movement contexts.
+We reframe the ``Visa Wall'' as a more general \textbf{bureaucratic hallucination}---models systematically associate foreign origins with administrative complexity regardless of actual legal frameworks. The paradox of EU citizens facing higher hallucination rates than non-EU candidates suggests training data conflation of US immigration complexity with European free movement contexts.
 
 \subsection{Why Does Scale Help Here But Hurt Elsewhere?}
 
-\citet{bui2025dialects} found larger models amplify dialect bias, yet we observe the opposite for nationality bias. We hypothesize this divergence reflects: (1) nationality-based discrimination may be more explicitly flagged in RLHF training than dialect-based discrimination; (2) dialect bias operates through implicit linguistic cues, while nationality bias involves explicit demographic labels; and (3) hiring contexts may receive more alignment attention than general association tasks.
+Bui et al. \citep{bui2025dialects} found that larger models amplify dialect bias, yet we observe the opposite pattern for nationality bias. We hypothesize this divergence reflects three key differences: (1) nationality-based discrimination may be more explicitly flagged in RLHF training than dialect-based discrimination; (2) dialect bias operates through implicit linguistic cues, while nationality bias involves explicit demographic labels; and (3) hiring contexts may receive more alignment attention than general association tasks.
 
 \subsection{The Reasoning Model Paradox}
 
@@ -416,5 +416,30 @@ qwen3-32b & 75 & 450 & Reasoning \\
 \label{sec:keywords}
 
 Keywords for hallucination detection: \textit{visa, visum, arbeitserlaubnis, aufenthaltstitel, blue card, bluecard, einreise, arbeitsgenehmigung, aufenthaltsgenehmigung, sponsoring, sponsor, arbeitsvisum, einwanderung, immigration}.
+\clearpage
+
+\section*{Declaration of Authorship}
+
+I hereby declare that I have prepared this report for project alignment independently, without the assistance of third parties and without using any sources or aids other than those indicated.  
+
+\begin{center}
+	\textbf{Declaration of Used AI Tools} \\[.3em]
+	\begin{tabularx}{\textwidth}{lXlc}
+		\toprule
+		Tool & Purpose \& Where? \& Useful? \\
+		\midrule
+		ChatGPT - 5 \& Academic rephrasing \& Report writing & ++ \\
+		DeepL \& Translation \& Report writing \& +++ \\
+		Toggle Writefull \& Grammar check in Overleaf \& Report writing \& + \\
+		Gemini \& Code debugging support \& Coding \& +++ \\
+		
+		\bottomrule
+	\end{tabularx}
+\end{center}
+
+\vspace{2cm}
+\noindent Signature\\
+\noindent Mannheim, November 17, 2025\hfill
+
 
 \end{document}
