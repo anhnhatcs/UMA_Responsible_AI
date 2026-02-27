@@ -1,1 +1,0 @@
-rsync -avz --progress --exclude='__pycache__' --exclude='*.pyc' --exclude='.git' /Users/anhnhat/Documents/UNIMA/2.\ Semester\ Study/4.\ FWS\ 25/8.\ Responsible\ AI/Project/UMA_Responsible_AI/ ma_anhnnguy@uc3.scc.kit.edu:/pfs/work9/workspace/scratch/ma_anhnnguy-topic_modeling_data/RAI

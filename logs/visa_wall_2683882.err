@@ -1,4 +1,0 @@
-/pfs/work9/workspace/scratch/ma_anhnnguy-topic_modeling_data/RAI/venv/lib/python3.11/site-packages/transformers/utils/hub.py:110: FutureWarning: Using `TRANSFORMERS_CACHE` is deprecated and will be removed in v5 of Transformers. Use `HF_HOME` instead.
-  warnings.warn(
-Note: Environment variable`HF_TOKEN` is set and is the current active token independently from the token you've just configured.
-[2025-12-27 18:11:30] WARNING _login.py:409: Note: Environment variable`HF_TOKEN` is set and is the current active token independently from the token you've just configured.

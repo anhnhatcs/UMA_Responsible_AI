@@ -1,44 +1,0 @@
-/pfs/work9/workspace/scratch/ma_anhnnguy-topic_modeling_data/RAI/venv/lib/python3.11/site-packages/transformers/utils/hub.py:110: FutureWarning: Using `TRANSFORMERS_CACHE` is deprecated and will be removed in v5 of Transformers. Use `HF_HOME` instead.
-  warnings.warn(
-Note: Environment variable`HF_TOKEN` is set and is the current active token independently from the token you've just configured.
-[2025-12-31 22:17:40] WARNING _login.py:409: Note: Environment variable`HF_TOKEN` is set and is the current active token independently from the token you've just configured.
-The argument `trust_remote_code` is to be used with Auto classes. It has no effect here and is ignored.
-[0;36m(EngineCore_DP0 pid=352578)[0;0m [0;36m(Worker_TP0 pid=352584)[0;0m Loading safetensors checkpoint shards:   0% Completed | 0/4 [00:00<?, ?it/s]
-[0;36m(EngineCore_DP0 pid=352578)[0;0m [0;36m(Worker_TP0 pid=352584)[0;0m Loading safetensors checkpoint shards:  25% Completed | 1/4 [00:03<00:10,  3.50s/it]
-[0;36m(EngineCore_DP0 pid=352578)[0;0m [0;36m(Worker_TP0 pid=352584)[0;0m Loading safetensors checkpoint shards:  50% Completed | 2/4 [00:07<00:07,  3.62s/it]
-[0;36m(EngineCore_DP0 pid=352578)[0;0m [0;36m(Worker_TP0 pid=352584)[0;0m Loading safetensors checkpoint shards:  75% Completed | 3/4 [00:11<00:03,  3.76s/it]
-[0;36m(EngineCore_DP0 pid=352578)[0;0m [0;36m(Worker_TP0 pid=352584)[0;0m Loading safetensors checkpoint shards: 100% Completed | 4/4 [00:15<00:00,  4.09s/it]
-[0;36m(EngineCore_DP0 pid=352578)[0;0m [0;36m(Worker_TP0 pid=352584)[0;0m Loading safetensors checkpoint shards: 100% Completed | 4/4 [00:15<00:00,  3.93s/it]
-[0;36m(EngineCore_DP0 pid=352578)[0;0m [0;36m(Worker_TP0 pid=352584)[0;0m 
-[0;36m(EngineCore_DP0 pid=352578)[0;0m [0;36m(Worker_TP0 pid=352584)[0;0m 2025-12-31 22:19:25,235 - INFO - autotuner.py:256 - flashinfer.jit: [Autotuner]: Autotuning process starts ...
-[0;36m(EngineCore_DP0 pid=352578)[0;0m [0;36m(Worker_TP3 pid=352590)[0;0m 2025-12-31 22:19:25,235 - INFO - autotuner.py:256 - flashinfer.jit: [Autotuner]: Autotuning process starts ...
-[0;36m(EngineCore_DP0 pid=352578)[0;0m [0;36m(Worker_TP2 pid=352588)[0;0m 2025-12-31 22:19:25,235 - INFO - autotuner.py:256 - flashinfer.jit: [Autotuner]: Autotuning process starts ...
-[0;36m(EngineCore_DP0 pid=352578)[0;0m [0;36m(Worker_TP1 pid=352586)[0;0m 2025-12-31 22:19:25,235 - INFO - autotuner.py:256 - flashinfer.jit: [Autotuner]: Autotuning process starts ...
-[0;36m(EngineCore_DP0 pid=352578)[0;0m [0;36m(Worker_TP3 pid=352590)[0;0m 2025-12-31 22:19:25,265 - INFO - autotuner.py:262 - flashinfer.jit: [Autotuner]: Autotuning process ends
-[0;36m(EngineCore_DP0 pid=352578)[0;0m [0;36m(Worker_TP2 pid=352588)[0;0m 2025-12-31 22:19:25,266 - INFO - autotuner.py:262 - flashinfer.jit: [Autotuner]: Autotuning process ends
-[0;36m(EngineCore_DP0 pid=352578)[0;0m [0;36m(Worker_TP1 pid=352586)[0;0m 2025-12-31 22:19:25,266 - INFO - autotuner.py:262 - flashinfer.jit: [Autotuner]: Autotuning process ends
-[0;36m(EngineCore_DP0 pid=352578)[0;0m [0;36m(Worker_TP0 pid=352584)[0;0m 2025-12-31 22:19:25,266 - INFO - autotuner.py:262 - flashinfer.jit: [Autotuner]: Autotuning process ends
-Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 13.95it/s]
-Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Traceback (most recent call last):
-  File "/pfs/work9/workspace/scratch/ma_anhnnguy-topic_modeling_data/RAI/run_bias_evaluation.py", line 584, in <module>
-    main()
-  File "/pfs/work9/workspace/scratch/ma_anhnnguy-topic_modeling_data/RAI/run_bias_evaluation.py", line 570, in main
-    run_evaluation(
-  File "/pfs/work9/workspace/scratch/ma_anhnnguy-topic_modeling_data/RAI/run_bias_evaluation.py", line 342, in run_evaluation
-    outputs = llm.generate([full_prompt], sampling_params)
-              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/pfs/work9/workspace/scratch/ma_anhnnguy-topic_modeling_data/RAI/venv/lib/python3.11/site-packages/vllm/entrypoints/llm.py", line 449, in generate
-    outputs = self._run_engine(use_tqdm=use_tqdm)
-              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/pfs/work9/workspace/scratch/ma_anhnnguy-topic_modeling_data/RAI/venv/lib/python3.11/site-packages/vllm/entrypoints/llm.py", line 1760, in _run_engine
-    step_outputs = self.llm_engine.step()
-                   ^^^^^^^^^^^^^^^^^^^^^^
-  File "/pfs/work9/workspace/scratch/ma_anhnnguy-topic_modeling_data/RAI/venv/lib/python3.11/site-packages/vllm/v1/engine/llm_engine.py", line 293, in step
-    outputs = self.engine_core.get_output()
-              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/pfs/work9/workspace/scratch/ma_anhnnguy-topic_modeling_data/RAI/venv/lib/python3.11/site-packages/vllm/v1/engine/core_client.py", line 717, in get_output
-    raise self._format_exception(outputs) from None
-vllm.v1.engine.exceptions.EngineDeadError: EngineCore encountered an issue. See stack trace (above) for the root cause.
-/opt/bwhpc/common/devel/python/3.11.7_gnu_14.2/lib/python3.11/multiprocessing/resource_tracker.py:254: UserWarning: resource_tracker: There appear to be 1 leaked shared_memory objects to clean up at shutdown
-  warnings.warn('resource_tracker: There appear to be %d '
-Processed prompts:   0%|          | 0/1 [00:02<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]
