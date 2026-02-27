@@ -123,7 +123,7 @@ sbatch run_large_models_fast.sh
 
 **Command**:
 ```bash
-cd /pfs/work9/workspace/scratch/ma_anhnnguy-topic_modeling_data/RAI
+cd /pfs/work9/workspace/scratch/$HPC_USER-topic_modeling_data/RAI
 sbatch run_remaining_models.sh
 ```
 
@@ -131,7 +131,7 @@ sbatch run_remaining_models.sh
 
 Check your results in:
 ```
-/pfs/work9/workspace/scratch/ma_anhnnguy-topic_modeling_data/RAI/results/
+/pfs/work9/workspace/scratch/$HPC_USER-topic_modeling_data/RAI/results/
 ```
 
 Completed models from Job 2701964:

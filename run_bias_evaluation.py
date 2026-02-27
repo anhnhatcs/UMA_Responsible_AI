@@ -20,10 +20,17 @@ from vllm import LLM, SamplingParams
 # ============================================================================
 # HUGGINGFACE AUTHENTICATION (for gated models like Gemma)
 # ============================================================================
-# Replace with your HuggingFace token from https://huggingface.co/settings/tokens
-HF_TOKEN = "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"  # <-- PUT YOUR TOKEN HERE
+# Set HF_TOKEN as an environment variable before running, e.g.:
+#   export HF_TOKEN="hf_YOUR_TOKEN_HERE"
+# Or pass it via your SLURM job script / .env file.
+HF_TOKEN = os.environ.get("HF_TOKEN", "")
 
-# Set environment variables for HuggingFace authentication
+if not HF_TOKEN:
+    print("⚠ WARNING: HF_TOKEN environment variable not set.")
+    print("  Gated models (e.g., Gemma) will fail to download.")
+    print("  Set it with: export HF_TOKEN='hf_YOUR_TOKEN_HERE'")
+
+# Ensure both env vars are set for compatibility
 os.environ["HF_TOKEN"] = HF_TOKEN
 os.environ["HUGGING_FACE_HUB_TOKEN"] = HF_TOKEN
 

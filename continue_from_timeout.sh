@@ -27,7 +27,7 @@ echo "=========================================="
 echo ""
 
 # Find workspace directory
-WORKSPACE_DIR="/pfs/work9/workspace/scratch/ma_anhnnguy-topic_modeling_data/RAI"
+WORKSPACE_DIR="/pfs/work9/workspace/scratch/${HPC_USER:-YOUR_HPC_USERNAME}-topic_modeling_data/RAI"
 cd "$WORKSPACE_DIR" || {
     echo "ERROR: Workspace not found: $WORKSPACE_DIR"
     exit 1

@@ -37,7 +37,7 @@
 
 # Workspace directory (where data, logs, and output will be stored)
 # Matches the rsync destination in sync_to_hpc.txt
-WORKSPACE_DIR="/pfs/work9/workspace/scratch/ma_anhnnguy-topic_modeling_data/RAI"
+WORKSPACE_DIR="/pfs/work9/workspace/scratch/${HPC_USER:-YOUR_HPC_USERNAME}-topic_modeling_data/RAI"
 
 # Script directory (where Python scripts are located - can be same as workspace)
 SCRIPT_DIR="$WORKSPACE_DIR"
